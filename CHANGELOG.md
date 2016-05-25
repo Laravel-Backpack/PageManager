@@ -22,6 +22,12 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Nothing
 
 
+## 1.0.2 - 2016-05-25
+
+### Fixed
+- Added Backpack\CRUD requirement in composer.json
+
+
 ## 1.0.1 - 2016-05-25
 
 ### Fixed
