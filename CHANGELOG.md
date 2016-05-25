@@ -22,6 +22,12 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Nothing
 
 
+## 1.0.1 - 2016-05-25
+
+### Fixed
+- composer.json
+
+
 ## 1.0.0 - 2016-05-25
 
 ### Added
