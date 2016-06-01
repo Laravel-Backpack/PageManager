@@ -73,13 +73,13 @@ class Page extends Model implements SluggableInterface
     */
 
     // The slug is created automatically from the "name" field if no slug exists.
-    public function getSlugOrNameAttribute()
+    public function getSlugOrTitleAttribute()
     {
         if ($this->slug != '') {
             return $this->slug;
         }
 
-        return $this->name;
+        return $this->title;
     }
 
     /*
