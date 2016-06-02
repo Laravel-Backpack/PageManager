@@ -22,6 +22,13 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Nothing
 
 
+## 1.0.4 - 2016-06-02
+
+### Fixed
+- Using the Admin middleware instead of Auth, as of Backpack\Base v0.6.0;
+- Moved routes definition to PageManagerServiceProvider;
+
+
 ## 1.0.3 - 2016-06-01
 
 ### Fixed
