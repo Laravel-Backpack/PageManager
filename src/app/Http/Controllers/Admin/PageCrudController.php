@@ -147,7 +147,7 @@ class PageCrudController extends CrudController
      *
      * @param  string $template_name The name of the template that should be used in the current form.
      */
-    private function useTemplate($template_name = false)
+    public function useTemplate($template_name = false)
     {
         $templates = $this->getTemplates();
 
@@ -165,7 +165,7 @@ class PageCrudController extends CrudController
     /**
      * Get all defined templates.
      */
-    private function getTemplates()
+    public function getTemplates()
     {
         $templates_array = [];
 
@@ -184,7 +184,7 @@ class PageCrudController extends CrudController
      *
      * Used to populate the template dropdown in the create/update forms.
      */
-    private function getTemplatesArray()
+    public function getTemplatesArray()
     {
         $templates = $this->getTemplates();
 

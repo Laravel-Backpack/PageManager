@@ -22,6 +22,12 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Nothing
 
 
+## 1.0.5 - 2016-06-03
+
+### Fixed
+- Additional methods on PageCrudController are now public instead of private, so PageCrudController can more easily be extended.
+
+
 ## 1.0.4 - 2016-06-02
 
 ### Fixed
