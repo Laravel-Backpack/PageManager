@@ -49,9 +49,9 @@ class Page extends Model implements SluggableInterface
         return url($this->slug);
     }
 
-    public function getPageAnchor()
+    public function getOpenButton()
     {
-        return '<a href="'.$this->getPageLink().'" target="_blank">Preview</a>';
+        return '<a class="btn btn-default btn-xs" href="'.$this->getPageLink().'" target="_blank"><i class="fa fa-eye"></i> Open</a>';
     }
 
     /*
@@ -87,4 +87,5 @@ class Page extends Model implements SluggableInterface
     | MUTATORS
     |--------------------------------------------------------------------------
     */
+
 }

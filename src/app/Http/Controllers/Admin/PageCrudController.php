@@ -38,11 +38,6 @@ class PageCrudController extends CrudController
                                 'function_name' => 'getTemplateName',
                                 ]);
         $this->crud->addColumn('slug');
-        $this->crud->addColumn([
-                                'name' => 'preview',
-                                'type' => 'model_function',
-                                'function_name' => 'getPageAnchor',
-                                ]);
 
         /*
         |--------------------------------------------------------------------------
@@ -53,6 +48,14 @@ class PageCrudController extends CrudController
         // In PageManager,
         // - default fields, that all templates are using, are set using $this->addDefaultPageFields();
         // - template-specific fields are set per-template, in the PageTemplates trait;
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | BUTTONS
+        |--------------------------------------------------------------------------
+        */
+        $this->crud->addButtonFromModelFunction('line', 'open', 'getOpenButton', 'beginning');
     }
 
     // -----------------------------------------------
@@ -120,11 +123,17 @@ class PageCrudController extends CrudController
                                 'options' => $this->getTemplatesArray(),
                                 'value' => $template,
                                 'allows_null' => false,
+                                'wrapperAttributes' => [
+                                    'class' => 'form-group col-md-6'
+                                ],
                             ]);
         $this->crud->addField([
                                 'name' => 'name',
                                 'label' => 'Page name (only seen by admins)',
                                 'type' => 'text',
+                                'wrapperAttributes' => [
+                                    'class' => 'form-group col-md-6'
+                                ],
                                 // 'disabled' => 'disabled'
                             ]);
         $this->crud->addField([

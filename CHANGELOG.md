@@ -22,6 +22,20 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Nothing
 
 
+## 1.0.7 - 2016-07-24
+
+### Fixed
+- fixed select_page_template field;
+- changed template and page_name fields to col-md-6;
+- changed Preview column with Open button;
+
+
+## 1.0.6 - 2016-07-23
+
+### Added
+- Required CRUD 3.0
+
+
 ## 1.0.5 - 2016-06-03
 
 ### Fixed
