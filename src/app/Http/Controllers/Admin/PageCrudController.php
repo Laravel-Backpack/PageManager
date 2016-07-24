@@ -124,7 +124,7 @@ class PageCrudController extends CrudController
                                 'value' => $template,
                                 'allows_null' => false,
                                 'wrapperAttributes' => [
-                                    'class' => 'form-group col-md-6'
+                                    'class' => 'form-group col-md-6',
                                 ],
                             ]);
         $this->crud->addField([
@@ -132,7 +132,7 @@ class PageCrudController extends CrudController
                                 'label' => 'Page name (only seen by admins)',
                                 'type' => 'text',
                                 'wrapperAttributes' => [
-                                    'class' => 'form-group col-md-6'
+                                    'class' => 'form-group col-md-6',
                                 ],
                                 // 'disabled' => 'disabled'
                             ]);

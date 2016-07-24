@@ -87,5 +87,4 @@ class Page extends Model implements SluggableInterface
     | MUTATORS
     |--------------------------------------------------------------------------
     */
-
 }
