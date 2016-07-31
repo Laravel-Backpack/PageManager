@@ -22,6 +22,14 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Nothing
 
 
+
+## 1.0.8 - 2016-07-31
+
+### Added
+- Bogus unit tests. At least we'be able to use travis-ci for requirements errors, until full unit tests are done.
+
+
+
 ## 1.0.7 - 2016-07-24
 
 ### Fixed
