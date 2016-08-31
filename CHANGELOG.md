@@ -22,6 +22,13 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Nothing
 
 
+
+## 1.1.0 - 2016-08-31
+
+### Added
+- Eloquent-sluggable version 4.
+
+
 ## 1.0.9 - 2016-07-31
 
 ### Fixed
