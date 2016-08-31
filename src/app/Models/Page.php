@@ -4,13 +4,12 @@ namespace Backpack\PageManager\app\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\CrudTrait;
-use Cviebrock\EloquentSluggable\SluggableInterface;
-use Cviebrock\EloquentSluggable\SluggableTrait;
+use Cviebrock\EloquentSluggable\Sluggable;
 
-class Page extends Model implements SluggableInterface
+class Page extends Model
 {
     use CrudTrait;
-    use SluggableTrait;
+    use Sluggable;
 
      /*
     |--------------------------------------------------------------------------
@@ -26,12 +25,20 @@ class Page extends Model implements SluggableInterface
     // protected $hidden = [];
     // protected $dates = [];
     protected $fakeColumns = ['extras'];
-    protected $sluggable = [
-        'build_from' => 'slug_or_title',
-        'save_to'    => 'slug',
-        'on_update'  => true,
-        'unique'     => true,
-    ];
+
+    /**
+     * Return the sluggable configuration array for this model.
+     *
+     * @return array
+     */
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source' => 'slug_or_title'
+            ]
+        ];
+    }
 
     /*
     |--------------------------------------------------------------------------
