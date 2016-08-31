@@ -35,8 +35,8 @@ class Page extends Model
     {
         return [
             'slug' => [
-                'source' => 'slug_or_title'
-            ]
+                'source' => 'slug_or_title',
+            ],
         ];
     }
 
