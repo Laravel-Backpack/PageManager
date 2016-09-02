@@ -20,8 +20,8 @@ $ composer require backpack/pagemanager
 2) Then add the service providers to your config/app.php file:
 
 ```
-'Cviebrock\EloquentSluggable\SluggableServiceProvider',
-'Backpack\PageManager\PageManagerServiceProvider',
+Cviebrock\EloquentSluggable\ServiceProvider::class, 
+Backpack\PageManager\PageManagerServiceProvider::class,
 ```
 
 3) Publish the views, migrations and the PageTemplates trait:
