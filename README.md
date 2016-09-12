@@ -50,16 +50,16 @@ php artisan migrate
 
 ## Example front-end
 
-No front-end is provided (Backpack only takes care of the admin panel), but for most projects this simple example will be all you need:
+No front-end is provided (Backpack only takes care of the admin panel), but for most projects this front-end code will be all you need:
 
-1. Create a catch-all route at the end of your routes file:
+(1) Create a catch-all route at the end of your routes file:
 ```php
 /** CATCH-ALL ROUTE for Backpack/PageManager - needs to be at the end of your routes.php file  **/
 Route::get('{page}/{subs?}', ['uses' => 'PageController@index'])
     ->where(['page' => '^((?!admin).)*$', 'subs' => '.*']);
 ```
 
-2. Create ```app\Http\Controllers\PageController.php``` that actually shows the page.
+(2) Create ```app\Http\Controllers\PageController.php``` that actually shows the page.
 ```php
 <?php
 
@@ -85,6 +85,8 @@ class PageController extends Controller
     }
 }
 ```
+
+Note: if you find yourself in need of sending extra data to a view, you should consider [using a view composer](https://laravel.com/docs/5.3/views#view-composers);
 
 ## Change log
 
