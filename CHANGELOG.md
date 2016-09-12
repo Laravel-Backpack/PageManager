@@ -22,6 +22,12 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Nothing
 
 
+## 1.1.1 - 2016-09-12
+
+### Added
+- Page model uses eloquent-sluggable trait for fetching items by slug.
+- Example front-end code.
+
 
 ## 1.1.0 - 2016-08-31
 

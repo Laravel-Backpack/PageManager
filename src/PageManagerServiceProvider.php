@@ -71,6 +71,9 @@ class PageManagerServiceProvider extends ServiceProvider
             return new PageManager($app);
         });
 
+        // register its dependencies
+        $this->app->register(\Cviebrock\EloquentSluggable\ServiceProvider::class);
+
         $this->setupRoutes($this->app->router);
     }
 }

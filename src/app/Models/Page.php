@@ -5,11 +5,13 @@ namespace Backpack\PageManager\app\Models;
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\CrudTrait;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 
 class Page extends Model
 {
     use CrudTrait;
     use Sluggable;
+    use SluggableScopeHelpers;
 
      /*
     |--------------------------------------------------------------------------

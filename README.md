@@ -48,6 +48,44 @@ php artisan migrate
 1. Go to **yourapp/admin/page** and see how it works.
 2. Define your own templates in app/PageTemplates.php using the Backpack\CRUD API.
 
+## Example front-end
+
+No front-end is provided (Backpack only takes care of the admin panel), but for most projects this simple example will be all you need:
+
+1. Create a catch-all route at the end of your routes file:
+```php
+/** CATCH-ALL ROUTE for Backpack/PageManager - needs to be at the end of your routes.php file  **/
+Route::get('{page}/{subs?}', ['uses' => 'PageController@index'])
+    ->where(['page' => '^((?!admin).)*$', 'subs' => '.*']);
+```
+
+2. Create ```app\Http\Controllers\PageController.php``` that actually shows the page.
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use Backpack\PageManager\app\Models\Page;
+
+class PageController extends Controller
+{
+    public function index($slug)
+    {
+        $page = Page::findBySlug($slug);
+
+        if (!$page)
+        {
+            abort(404, 'Please go back to our <a href="'.url('').'">homepage</a>.');
+        }
+
+        $this->data['title'] = $page->title;
+        $this->data['page'] = $page->withFakes();
+
+        return view('pages.'.$page->template, $this->data);
+    }
+}
+```
+
 ## Change log
 
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
