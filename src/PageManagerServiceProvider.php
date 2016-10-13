@@ -40,7 +40,7 @@ class PageManagerServiceProvider extends ServiceProvider
     {
         $router->group(['namespace' => 'Backpack\PageManager\app\Http\Controllers'], function ($router) {
             // Admin Interface Routes
-            Route::group(['middleware' => ['web', 'admin'], 'prefix' => 'admin'], function () {
+            Route::group(['middleware' => ['web', 'admin'], 'prefix' => config('backpack.base.route_prefix')], function () {
                 // Backpack\PageManager routes
                 Route::get('page/create/{template}', 'Admin\PageCrudController@create');
                 Route::get('page/{id}/edit/{template}', 'Admin\PageCrudController@edit');

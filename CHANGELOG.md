@@ -21,6 +21,11 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 ### Security
 - Nothing
 
+## 1.1.2 - 2016-10-12
+
+### Fixed
+- Routes now follow the route_prefix set in config;
+
 
 ## 1.1.1 - 2016-09-12
 
@@ -45,7 +50,6 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ### Added
 - Bogus unit tests. At least we'be able to use travis-ci for requirements errors, until full unit tests are done.
-
 
 
 ## 1.0.7 - 2016-07-24
