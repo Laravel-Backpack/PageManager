@@ -22,7 +22,7 @@ class PageCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
         $this->crud->setModel("Backpack\PageManager\app\Models\Page");
-        $this->crud->setRoute('admin/page');
+        $this->crud->setRoute(config('backpack.base.route_prefix').'/page');
         $this->crud->setEntityNameStrings('page', 'pages');
 
         /*
