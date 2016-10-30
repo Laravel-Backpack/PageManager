@@ -21,6 +21,13 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 ### Security
 - Nothing
 
+
+## 1.1.3 - 2016-10-30
+
+### Fixed
+- Routes now follow the route_prefix set in config, with an "admin" default;
+
+
 ## 1.1.2 - 2016-10-12
 
 ### Fixed
