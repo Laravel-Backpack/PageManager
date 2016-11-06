@@ -86,7 +86,9 @@ class PageController extends Controller
 }
 ```
 
-Note: if you find yourself in need of sending extra data to a view, you should consider [using a view composer](https://laravel.com/docs/5.3/views#view-composers);
+(3) Create the views for those templates (how those pages actually look - the HTML CSS JS) and place them in your ```resources/views/pages/``` directory. Inside those blade files, you can use the ```$page``` variable. That's where all the page content is stored. For more complicated pages, you can also use [fake fields](https://laravel-backpack.readme.io/docs/crud#section-extras-fake-fields-stored-as-json-in-the-database-) in your page templates. You'll also find those attributes in the ```$page``` variable.
+
+Note: if you find yourself in need of sending extra data to a view you load on multiple pages, you should consider [using a view composer](https://laravel.com/docs/5.3/views#view-composers);
 
 ## Change log
 
