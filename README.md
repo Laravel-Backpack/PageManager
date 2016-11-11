@@ -119,7 +119,7 @@ If you discover any security related issues, please email hello@tabacitu.ro inst
 
 ## License
 
-The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+Backpack is free for non-commercial use and [$19/project for commercial use](https://backpackforlaravel.com/#pricing). Please see [License File](LICENSE.md) for more information.
 
 [ico-version]: https://img.shields.io/packagist/v/backpack/PageManager.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
