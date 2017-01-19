@@ -16,6 +16,13 @@ class PageManagerServiceProvider extends ServiceProvider
     protected $defer = false;
 
     /**
+     * Indicates if loading of the provider is deferred.
+     *
+     * @var string
+     */
+    protected $adminControllerClass = 'Backpack\PageManager\App\Http\Controllers\Admin\PageCrudController';
+
+    /**
      * Perform post-registration booting of services.
      *
      * @return void
@@ -38,25 +45,26 @@ class PageManagerServiceProvider extends ServiceProvider
      */
     public function setupRoutes(Router $router)
     {
-        $router->group(['namespace' => 'Backpack\PageManager\app\Http\Controllers'], function ($router) {
-            // Admin Interface Routes
-            Route::group(['middleware' => ['web', 'admin'], 'prefix' => config('backpack.base.route_prefix', 'admin')], function () {
-                // Backpack\PageManager routes
-                Route::get('page/create/{template}', 'Admin\PageCrudController@create');
-                Route::get('page/{id}/edit/{template}', 'Admin\PageCrudController@edit');
+        // Admin Interface Routes
+        Route::group(['middleware' => ['web', 'admin'], 'prefix' => config('backpack.base.route_prefix', 'admin')], function () {
 
-                // This triggered an error before publishing the PageTemplates trait, when calling Route::controller();
-                // CRUD::resource('page', 'Admin\PageCrudController');
+            $controller = $this->adminControllerClass;
 
-                // So for PageCrudController all routes are explicitly defined:
-                Route::get('page/reorder', 'Admin\PageCrudController@reorder');
-                Route::get('page/reorder/{lang}', 'Admin\PageCrudController@reorder');
-                Route::post('page/reorder', 'Admin\PageCrudController@saveReorder');
-                Route::post('page/reorder/{lang}', 'Admin\PageCrudController@saveReorder');
-                Route::get('page/{id}/details', 'Admin\PageCrudController@showDetailsRow');
-                Route::get('page/{id}/translate/{lang}', 'Admin\PageCrudController@translateItem');
-                Route::resource('page', 'Admin\PageCrudController');
-            });
+            // Backpack\PageManager routes
+            Route::get('page/create/{template}', $controller . '@create');
+            Route::get('page/{id}/edit/{template}', $controller . '@edit');
+
+            // This triggered an error before publishing the PageTemplates trait, when calling Route::controller();
+            // CRUD::resource('page', $controller . '');
+
+            // So for PageCrudController all routes are explicitly defined:
+            Route::get('page/reorder', $controller . '@reorder');
+            Route::get('page/reorder/{lang}', $controller . '@reorder');
+            Route::post('page/reorder', $controller . '@saveReorder');
+            Route::post('page/reorder/{lang}', $controller . '@saveReorder');
+            Route::get('page/{id}/details', $controller . '@showDetailsRow');
+            Route::get('page/{id}/translate/{lang}', $controller . '@translateItem');
+            Route::resource('page', $controller);
         });
     }
 
