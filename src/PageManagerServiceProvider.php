@@ -35,6 +35,10 @@ class PageManagerServiceProvider extends ServiceProvider
         $this->publishes([__DIR__.'/app/PageTemplates.php' => app_path('PageTemplates.php')], 'trait');
         // publish migrations
         $this->publishes([__DIR__.'/database/migrations' => database_path('migrations')], 'migrations');
+        // public config
+        $this->publishes([__DIR__.'/config/page-manager.php' => config_path('page-manager.php')]);
+
+        $this->mergeConfigFrom(__DIR__.'/config/page-manager.php', 'page-manager');
     }
 
     /**
@@ -48,7 +52,7 @@ class PageManagerServiceProvider extends ServiceProvider
         // Admin Interface Routes
         Route::group(['middleware' => ['web', 'admin'], 'prefix' => config('backpack.base.route_prefix', 'admin')], function () {
 
-            $controller = $this->adminControllerClass;
+            $controller = config('page-manager.admin_controller_class', $this->adminControllerClass);
 
             // Backpack\PageManager routes
             Route::get('page/create/{template}', $controller . '@create');

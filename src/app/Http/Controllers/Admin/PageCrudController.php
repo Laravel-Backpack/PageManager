@@ -16,12 +16,14 @@ class PageCrudController extends CrudController
     {
         parent::__construct();
 
+        $modelClass = config('page-manager.page_model_class', 'Backpack\PageManager\App\Models\Page');
+
         /*
         |--------------------------------------------------------------------------
         | BASIC CRUD INFORMATION
         |--------------------------------------------------------------------------
         */
-        $this->crud->setModel("Backpack\PageManager\app\Models\Page");
+        $this->crud->setModel($modelClass);
         $this->crud->setRoute(config('backpack.base.route_prefix').'/page');
         $this->crud->setEntityNameStrings('page', 'pages');
 
