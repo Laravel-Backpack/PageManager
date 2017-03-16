@@ -2,9 +2,9 @@
 
 namespace Backpack\PageManager;
 
-use Illuminate\Support\ServiceProvider;
-use Illuminate\Routing\Router;
 use Route;
+use Illuminate\Routing\Router;
+use Illuminate\Support\ServiceProvider;
 
 class PageManagerServiceProvider extends ServiceProvider
 {

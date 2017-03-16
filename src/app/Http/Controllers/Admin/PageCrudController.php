@@ -2,11 +2,11 @@
 
 namespace Backpack\PageManager\app\Http\Controllers\Admin;
 
-use Backpack\CRUD\app\Http\Controllers\CrudController;
+use App\PageTemplates;
 // VALIDATION: change the requests to match your own file names if you need form validation
+use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\PageManager\app\Http\Requests\PageRequest as StoreRequest;
 use Backpack\PageManager\app\Http\Requests\PageRequest as UpdateRequest;
-use App\PageTemplates;
 
 class PageCrudController extends CrudController
 {
@@ -48,7 +48,6 @@ class PageCrudController extends CrudController
         // In PageManager,
         // - default fields, that all templates are using, are set using $this->addDefaultPageFields();
         // - template-specific fields are set per-template, in the PageTemplates trait;
-
 
         /*
         |--------------------------------------------------------------------------
