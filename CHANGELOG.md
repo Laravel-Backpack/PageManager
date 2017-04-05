@@ -22,6 +22,12 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Nothing
 
 
+## 1.1.4 - 2017-04-05
+
+### Added
+- ability to easily extend the Controller or Model (thanks to [Carl Olsen](https://github.com/unstoppablecarl));
+
+
 ## 1.1.3 - 2016-10-30
 
 ### Fixed

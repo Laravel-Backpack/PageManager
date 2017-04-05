@@ -94,6 +94,13 @@ class PageController extends Controller
 
 Note: if you find yourself in need of sending extra data to a view you load on multiple pages, you should consider [using a view composer](https://laravel.com/docs/5.3/views#view-composers);
 
+## Extend
+
+If you need to make any modifications to the controller, model or request, you should:
+- make sure ```config/backpack/pagemanager.php``` is published; if not, publish it using ```php artisan vendor:publish --provider="Backpack\PageManager\PageManagerServiceProvider"```;
+- create a new controller/model that extends the one in the package;
+- enter controller or model in the pagemanager.php config file, and that's the one that the CRUD will be using;
+
 ## Change log
 
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
