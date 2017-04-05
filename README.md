@@ -70,6 +70,7 @@ Route::get('{page}/{subs?}', ['uses' => 'PageController@index'])
 namespace App\Http\Controllers;
 
 use Backpack\PageManager\app\Models\Page;
+use App\Http\Controllers\Controller;
 
 class PageController extends Controller
 {
