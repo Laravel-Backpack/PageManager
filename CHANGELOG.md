@@ -22,6 +22,12 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Nothing
 
 
+## 1.1.5 - 2017-04-05
+
+### Fixed
+- creating pages with no slugs;
+
+
 ## 1.1.4 - 2017-04-05
 
 ### Added
