@@ -22,6 +22,12 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Nothing
 
 
+## 1.1.6 - 2017-04-05
+
+### Fixed
+- moved pagemanager.php config file to the backpack folder;
+
+
 ## 1.1.5 - 2017-04-05
 
 ### Fixed

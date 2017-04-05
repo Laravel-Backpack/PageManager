@@ -16,7 +16,7 @@ class PageCrudController extends CrudController
     {
         parent::__construct();
 
-        $modelClass = config('pagemanager.page_model_class', 'Backpack\PageManager\App\Models\Page');
+        $modelClass = config('backpack.pagemanager.page_model_class', 'Backpack\PageManager\App\Models\Page');
 
         /*
         |--------------------------------------------------------------------------
