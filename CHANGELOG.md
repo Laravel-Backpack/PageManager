@@ -22,6 +22,12 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Nothing
 
 
+
+## 1.1.7 - 2017-04-06
+
+### Fixed
+- class does not exist issue, because of lowercase app in configured namespace;
+
 ## 1.1.6 - 2017-04-05
 
 ### Fixed
