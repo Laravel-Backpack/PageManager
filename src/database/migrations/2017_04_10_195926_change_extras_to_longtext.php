@@ -27,6 +27,6 @@ class ChangeExtrasToLongtext extends Migration
     {
         Schema::table('pages', function( Blueprint $table) {
             $table->text('extras')->change();
-        })
+        });
     }
 }
