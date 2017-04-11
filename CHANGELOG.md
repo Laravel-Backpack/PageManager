@@ -22,6 +22,11 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Nothing
 
 
+## 1.1.8 - 2017-04-11
+
+### Fixed
+- lowercase app namespace everywhere;
+
 
 ## 1.1.7 - 2017-04-06
 

@@ -20,7 +20,7 @@ class PageManagerServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    protected $adminControllerClass = 'Backpack\PageManager\App\Http\Controllers\Admin\PageCrudController';
+    protected $adminControllerClass = 'Backpack\PageManager\app\Http\Controllers\Admin\PageCrudController';
 
     /**
      * Perform post-registration booting of services.
