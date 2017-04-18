@@ -22,6 +22,13 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Nothing
 
 
+
+## 1.1.9 - 2017-04-18
+
+### Fixed
+- longText extras column;
+
+
 ## 1.1.8 - 2017-04-11
 
 ### Fixed
