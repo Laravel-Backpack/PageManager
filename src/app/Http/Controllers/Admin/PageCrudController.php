@@ -183,7 +183,9 @@ class PageCrudController extends CrudController
         $templates = $templates_trait->getMethods();
 
         if (! count($templates)) {
-            abort('403', 'No templates have been found.');
+                abort(503, "The template '$template_name' cannot be found in " .
+                    "the page manager's configuration. To continue, you must "
+                    ."request for this to be fixed.");
         }
 
         return $templates;
