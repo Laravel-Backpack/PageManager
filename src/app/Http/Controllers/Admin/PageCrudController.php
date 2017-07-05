@@ -175,7 +175,7 @@ class PageCrudController extends CrudController
     /**
      * Get all defined templates.
      */
-    public function getTemplates()
+    public function getTemplates($template_name = false)
     {
         $templates_array = [];
 
@@ -183,7 +183,7 @@ class PageCrudController extends CrudController
         $templates = $templates_trait->getMethods(\ReflectionMethod::IS_PRIVATE);
 
         if (! count($templates)) {
-            abort('403', 'No templates have been found.');
+            abort(503, "The template could not be found. It might have been deleted since this page was created. To continue, please ask your webmin or development team to fix this.");
         }
 
         return $templates;
