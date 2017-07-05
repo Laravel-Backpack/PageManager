@@ -22,6 +22,12 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Nothing
 
 
+## 1.1.10 - 2017-07-05
+
+### Fixed
+- prettier error message when template has been deleted;
+- filterable getTemplates() method, using reflection;
+
 
 ## 1.1.9 - 2017-04-18
 
