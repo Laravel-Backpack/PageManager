@@ -16,11 +16,11 @@ class PageManagerServiceProvider extends ServiceProvider
     protected $defer = false;
 
     /**
-     * Indicates if loading of the provider is deferred.
+     * Where the route file lives, both inside the package and in the app (if overwritten).
      *
-     * @var string
+     * @var bool
      */
-    protected $adminControllerClass = 'Backpack\PageManager\app\Http\Controllers\Admin\PageCrudController';
+    public $routeFilePath = '/routes/backpack/pagemanager.php';
 
     /**
      * Perform post-registration booting of services.
@@ -49,26 +49,15 @@ class PageManagerServiceProvider extends ServiceProvider
      */
     public function setupRoutes(Router $router)
     {
-        // Admin Interface Routes
-        Route::group(['middleware' => ['web', 'admin'], 'prefix' => config('backpack.base.route_prefix', 'admin')], function () {
-            $controller = config('backpack.pagemanager.admin_controller_class', $this->adminControllerClass);
+        // by default, use the routes file provided in vendor
+        $routeFilePathInUse = __DIR__.$this->routeFilePath;
 
-            // Backpack\PageManager routes
-            Route::get('page/create/{template}', $controller.'@create');
-            Route::get('page/{id}/edit/{template}', $controller.'@edit');
+        // but if there's a file with the same name in routes/backpack, use that one
+        if (file_exists(base_path().$this->routeFilePath)) {
+            $routeFilePathInUse = base_path().$this->routeFilePath;
+        }
 
-            // This triggered an error before publishing the PageTemplates trait, when calling Route::controller();
-            // CRUD::resource('page', $controller . '');
-
-            // So for PageCrudController all routes are explicitly defined:
-            Route::get('page/reorder', $controller.'@reorder');
-            Route::get('page/reorder/{lang}', $controller.'@reorder');
-            Route::post('page/reorder', $controller.'@saveReorder');
-            Route::post('page/reorder/{lang}', $controller.'@saveReorder');
-            Route::get('page/{id}/details', $controller.'@showDetailsRow');
-            Route::get('page/{id}/translate/{lang}', $controller.'@translateItem');
-            Route::resource('page', $controller);
-        });
+        $this->loadRoutesFrom($routeFilePathInUse);
     }
 
     /**
@@ -78,8 +67,6 @@ class PageManagerServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        if(!config('backpack.base.skip_all_backpack_routes',false)){
-            $this->setupRoutes($this->app->router);            
-        }
+        $this->setupRoutes($this->app->router);
     }
 }
