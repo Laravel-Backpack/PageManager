@@ -175,17 +175,15 @@ class PageCrudController extends CrudController
     /**
      * Get all defined templates.
      */
-    public function getTemplates()
+    public function getTemplates($template_name = false)
     {
         $templates_array = [];
 
         $templates_trait = new \ReflectionClass('App\PageTemplates');
-        $templates = $templates_trait->getMethods();
+        $templates = $templates_trait->getMethods(\ReflectionMethod::IS_PRIVATE);
 
         if (! count($templates)) {
-            abort(503, "The template '$template_name' cannot be found in ".
-                    "the page manager's configuration. To continue, you must "
-                    .'request for this to be fixed.');
+            abort(503, "The template could not be found. It might have been deleted since this page was created. To continue, please ask your webmin or development team to fix this.");
         }
 
         return $templates;
