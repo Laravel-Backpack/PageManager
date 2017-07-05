@@ -180,7 +180,7 @@ class PageCrudController extends CrudController
         $templates_array = [];
 
         $templates_trait = new \ReflectionClass('App\PageTemplates');
-        $templates = $templates_trait->getMethods();
+        $templates = $templates_trait->getMethods(\ReflectionMethod::IS_PRIVATE);
 
         if (! count($templates)) {
             abort('403', 'No templates have been found.');
