@@ -116,6 +116,13 @@ $ composer test
 
 Please see [CONTRIBUTING](CONTRIBUTING.md) and [CONDUCT](CONDUCT.md) for details.
 
+## Overwriting Functionality
+
+If you need to modify how this works in a project: 
+- create a ```routes/backpack/pagemanager.php``` file; the package will see that, and load _your_ routes file, instead of the one in the package; 
+- create controllers/models that extend the ones in the package, and use those in your new routes file;
+- modify anything you'd like in the new controllers/models;
+
 ## Security
 
 If you discover any security related issues, please email hello@tabacitu.ro instead of using the issue tracker.
