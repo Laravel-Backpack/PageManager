@@ -25,7 +25,7 @@ trait PageTemplates
         $this->crud->addField([   // CustomHTML
                         'name' => 'metas_separator',
                         'type' => 'custom_html',
-                        'value' => '<br><h2>' . trans('backpack::pagemanager.metas') . '</h2><hr>',
+                        'value' => '<br><h2>'.trans('backpack::pagemanager.metas').'</h2><hr>',
                     ]);
         $this->crud->addField([
                         'name' => 'meta_title',
@@ -49,7 +49,7 @@ trait PageTemplates
         $this->crud->addField([   // CustomHTML
                         'name' => 'content_separator',
                         'type' => 'custom_html',
-                        'value' => '<br><h2>' . trans('backpack::pagemanager.content') . '</h2><hr>',
+                        'value' => '<br><h2>'.trans('backpack::pagemanager.content').'</h2><hr>',
                     ]);
         $this->crud->addField([
                         'name' => 'content',
