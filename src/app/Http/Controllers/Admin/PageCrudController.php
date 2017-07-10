@@ -25,7 +25,7 @@ class PageCrudController extends CrudController
         */
         $this->crud->setModel($modelClass);
         $this->crud->setRoute(config('backpack.base.route_prefix').'/page');
-        $this->crud->setEntityNameStrings('page', 'pages');
+        $this->crud->setEntityNameStrings(trans('backpack::pagemanager.page'), trans('backpack::pagemanager.pages'));
 
         /*
         |--------------------------------------------------------------------------
@@ -33,13 +33,20 @@ class PageCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
 
-        $this->crud->addColumn('name');
+        $this->crud->addColumn([
+                                'name' => 'name',
+                                'label' => trans('backpack::pagemanager.name'),
+                                ]);
         $this->crud->addColumn([
                                 'name' => 'template',
+                                'label' => trans('backpack::pagemanager.template'),
                                 'type' => 'model_function',
                                 'function_name' => 'getTemplateName',
                                 ]);
-        $this->crud->addColumn('slug');
+        $this->crud->addColumn([
+                                'name' => 'slug',
+                                'label' => trans('backpack::pagemanager.slug'),
+                                ]);
 
         /*
         |--------------------------------------------------------------------------
@@ -119,7 +126,7 @@ class PageCrudController extends CrudController
     {
         $this->crud->addField([
                                 'name' => 'template',
-                                'label' => 'Template',
+                                'label' => trans('backpack::pagemanager.template'),
                                 'type' => 'select_page_template',
                                 'options' => $this->getTemplatesArray(),
                                 'value' => $template,
@@ -130,7 +137,7 @@ class PageCrudController extends CrudController
                             ]);
         $this->crud->addField([
                                 'name' => 'name',
-                                'label' => 'Page name (only seen by admins)',
+                                'label' => trans('backpack::pagemanager.page_name'),
                                 'type' => 'text',
                                 'wrapperAttributes' => [
                                     'class' => 'form-group col-md-6',
@@ -139,15 +146,15 @@ class PageCrudController extends CrudController
                             ]);
         $this->crud->addField([
                                 'name' => 'title',
-                                'label' => 'Page Title',
+                                'label' => trans('backpack::pagemanager.page_title'),
                                 'type' => 'text',
                                 // 'disabled' => 'disabled'
                             ]);
         $this->crud->addField([
                                 'name' => 'slug',
-                                'label' => 'Page Slug (URL)',
+                                'label' => trans('backpack::pagemanager.page_slug'),
                                 'type' => 'text',
-                                'hint' => 'Will be automatically generated from your title, if left empty.',
+                                'hint' => trans('backpack::pagemanager.page_slug_hint'),
                                 // 'disabled' => 'disabled'
                             ]);
     }
@@ -183,7 +190,7 @@ class PageCrudController extends CrudController
         $templates = $templates_trait->getMethods(\ReflectionMethod::IS_PRIVATE);
 
         if (! count($templates)) {
-            abort(503, 'The template could not be found. It might have been deleted since this page was created. To continue, please ask your webmin or development team to fix this.');
+            abort(503, trans('backpack::pagemanager.template_not_found'));
         }
 
         return $templates;
