@@ -22,6 +22,12 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Nothing
 
 
+## 1.1.19 - 2017-07-18
+
+### Added
+- language file support and EN and IT language files, thanks to [Federico Liva](https://github.com/fede91it);
+
+
 ## 1.1.18 - 2017-07-06
 
 ### Added
