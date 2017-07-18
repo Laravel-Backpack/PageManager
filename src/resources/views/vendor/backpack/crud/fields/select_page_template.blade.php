@@ -67,7 +67,7 @@
 
             jQuery(document).ready(function($) {
                 $("#select_template").change(function(e) {
-                    var select_template_confirmation = confirm("Are you sure you want to change the page template? You will lose any unsaved modifications for this page.");
+                    var select_template_confirmation = confirm("@lang('backpack::pagemanager.change_template_confirmation')");
                     if (select_template_confirmation == true) {
                         redirect_to_new_page_with_template_parameter();
                     } else {
