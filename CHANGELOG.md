@@ -22,6 +22,12 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Nothing
 
 
+## 1.1.22 - 2017-11-02
+
+### Added
+- search route for CRUD 3.3 upgrade;
+
+
 ## 1.1.21 - 2017-08-30
 
 ### Added
