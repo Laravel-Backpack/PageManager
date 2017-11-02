@@ -12,7 +12,7 @@ class PageCrudController extends CrudController
 {
     use PageTemplates;
 
-    public function __construct($template_name = false)
+    public function setup($template_name = false)
     {
         parent::__construct();
 

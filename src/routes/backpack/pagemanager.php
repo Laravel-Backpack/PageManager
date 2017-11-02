@@ -30,5 +30,11 @@ Route::group([
         Route::post('page/reorder/{lang}', $controller.'@saveReorder');
         Route::get('page/{id}/details', $controller.'@showDetailsRow');
         Route::get('page/{id}/translate/{lang}', $controller.'@translateItem');
+
+        Route::post('page/search', [
+            'as' => 'crud.page.search',
+            'uses' => $controller.'@search',
+        ]);
+
         Route::resource('page', $controller);
     });
