@@ -37,4 +37,10 @@ Route::group([
         ]);
 
         Route::resource('page', $controller);
+
+        // Backpack\PageManager routes for unique pages
+        $uniqueController = config('backpack.pagemanager.unique_admin_controller_class', 'Backpack\PageManager\app\Http\Controllers\Admin\UniquePageCrudController');
+
+        Route::get('unique/{slug}', $uniqueController.'@uniqueEdit');
+        Route::put('unique/{slug}/{id}', $uniqueController.'@update');
     });
