@@ -2,7 +2,6 @@
 
 namespace Backpack\PageManager\app\Http\Controllers\Admin;
 
-
 use App\UniquePages;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Http\Controllers\CrudFeatures\SaveActions;
@@ -34,7 +33,7 @@ class UniquePageCrudController extends CrudController
         $model = $this->crud->model;
         $entry = $model::findBySlug($slug);
 
-        if (!$entry) {
+        if (! $entry) {
             $entry = $this->createMissingPage($slug);
         }
 
@@ -71,25 +70,25 @@ class UniquePageCrudController extends CrudController
     {
         $this->crud->addField([
             'name' => 'template',
-            'type' => 'hidden'
+            'type' => 'hidden',
         ]);
         $this->crud->addField([
             'name' => 'name',
-            'type' => 'hidden'
+            'type' => 'hidden',
         ]);
         $this->crud->addField([
             'name' => 'title',
-            'type' => 'hidden'
+            'type' => 'hidden',
         ]);
         $this->crud->addField([
             'name' => 'slug',
-            'type' => 'hidden'
+            'type' => 'hidden',
         ]);
 
         $this->crud->addField([
             'name' => 'open',
             'type' => 'custom_html',
-            'value' => $page->getOpenButton()
+            'value' => $page->getOpenButton(),
         ]);
     }
 
@@ -105,11 +104,11 @@ class UniquePageCrudController extends CrudController
     {
         $pages = collect($this->getUniquePages());
 
-        $slugs = $pages->mapWithKeys(function($page) {
+        $slugs = $pages->mapWithKeys(function ($page) {
             return [str_slug($page) => $page];
         });
 
-        if (!$page = $slugs->pull($slug)) {
+        if (! $page = $slugs->pull($slug)) {
             abort(404);
         }
 
@@ -119,7 +118,7 @@ class UniquePageCrudController extends CrudController
             'template' => $page,
             'name' => camel_case($page),
             'title' => camel_case($page),
-            'slug' => $slug
+            'slug' => $slug,
         ]);
     }
 
@@ -128,20 +127,20 @@ class UniquePageCrudController extends CrudController
     | BASIC CRUD INFORMATION
     |--------------------------------------------------------------------------
     */
-    
-    /** 
-     * Overrides trait version to remove  
+
+    /**
+     * Overrides trait version to remove.
      */
     public function getSaveAction()
     {
         $saveCurrent = [
             'value' => $this->getSaveActionButtonName('save_and_back'),
-            'label' => $this->getSaveActionButtonName('save_and_back')
+            'label' => $this->getSaveActionButtonName('save_and_back'),
         ];
 
         return [
             'active' => $saveCurrent,
-            'options' => []
+            'options' => [],
         ];
     }
 
@@ -149,5 +148,4 @@ class UniquePageCrudController extends CrudController
     {
         // do nothing to preserve session value for other crud
     }
-
 }
