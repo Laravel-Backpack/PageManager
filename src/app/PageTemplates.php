@@ -58,14 +58,4 @@ trait PageTemplates
                         'placeholder' => trans('backpack::pagemanager.content_placeholder'),
                     ]);
     }
-
-    private function about_us()
-    {
-        $this->crud->addField([
-                        'name' => 'content',
-                        'label' => trans('backpack::pagemanager.content'),
-                        'type' => 'wysiwyg',
-                        'placeholder' => trans('backpack::pagemanager.content_placeholder'),
-                    ]);
-    }
 }
