@@ -2,10 +2,8 @@
 
 namespace Backpack\PageManager\app;
 
-
 trait TraitReflections
 {
-
     public function checkForTemplatesAndUniquePagesNotDistinct()
     {
         if (config('backpack.pagemanager.page_model_class') != config('backpack.pagemanager.unique_page_model_class')) {
@@ -21,7 +19,7 @@ trait TraitReflections
     }
 
     /**
-     * Get all defined unique pages
+     * Get all defined unique pages.
      */
     public function getUniquePages()
     {

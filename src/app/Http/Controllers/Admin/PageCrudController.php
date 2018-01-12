@@ -4,10 +4,10 @@ namespace Backpack\PageManager\app\Http\Controllers\Admin;
 
 use App\PageTemplates;
 // VALIDATION: change the requests to match your own file names if you need form validation
+use Backpack\PageManager\app\TraitReflections;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\PageManager\app\Http\Requests\PageRequest as StoreRequest;
 use Backpack\PageManager\app\Http\Requests\PageRequest as UpdateRequest;
-use Backpack\PageManager\app\TraitReflections;
 
 class PageCrudController extends CrudController
 {
@@ -30,7 +30,6 @@ class PageCrudController extends CrudController
         $this->crud->setModel($modelClass);
         $this->crud->setRoute(config('backpack.base.route_prefix').'/page');
         $this->crud->setEntityNameStrings(trans('backpack::pagemanager.page'), trans('backpack::pagemanager.pages'));
-
 
         $template_names = collect($this->getTemplates())->pluck('name');
         $this->crud->addClause('whereIn', 'template', $template_names);

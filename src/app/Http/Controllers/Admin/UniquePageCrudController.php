@@ -3,9 +3,9 @@
 namespace Backpack\PageManager\app\Http\Controllers\Admin;
 
 use App\UniquePages;
+use Backpack\PageManager\app\TraitReflections;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Http\Controllers\CrudFeatures\SaveActions;
-use Backpack\PageManager\app\TraitReflections;
 
 class UniquePageCrudController extends CrudController
 {
@@ -36,11 +36,10 @@ class UniquePageCrudController extends CrudController
         if (config('backpack.pagemanager.unique_page_revisions')) {
             $this->crud->allowAccess('revisions');
         }
-
     }
 
     /**
-     * As we want to edit pages by slug we need a new edit function
+     * As we want to edit pages by slug we need a new edit function.
      *
      * @param string $slug the page slug
      * @return Response
@@ -98,7 +97,7 @@ class UniquePageCrudController extends CrudController
         $this->crud->addField([
             'name' => 'open',
             'type' => 'custom_html',
-            'value' => $this->buttons($page)
+            'value' => $this->buttons($page),
         ]);
     }
 
@@ -106,14 +105,15 @@ class UniquePageCrudController extends CrudController
     {
         $openButton = $page->getOpenButton();
         $revisionsButton = view('crud::buttons.revisions', ['crud' => $this->crud, 'entry' => $page]);
-        return $openButton .' '.$revisionsButton;
+
+        return $openButton.' '.$revisionsButton;
     }
 
     public function createMissingPage($slug)
     {
         $pages = collect($this->getUniquePages());
 
-        $slugs = $pages->mapWithKeys(function($page) {
+        $slugs = $pages->mapWithKeys(function ($page) {
             return [str_slug($page->name) => $page->name];
         });
 

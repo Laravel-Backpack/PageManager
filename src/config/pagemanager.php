@@ -16,5 +16,5 @@ return [
     // Set to true if you want to use revisions on unique pages
     // This requires you to extend the class you use for unique pages
     // For setup details please check the backpack documentation on revisions
-    'unique_page_revisions'         => false
+    'unique_page_revisions'         => false,
 ];
