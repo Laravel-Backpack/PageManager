@@ -5,17 +5,21 @@ namespace Backpack\PageManager\app\Http\Controllers\Admin;
 use App\UniquePages;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Http\Controllers\CrudFeatures\SaveActions;
+use Backpack\PageManager\app\TraitReflections;
 
 class UniquePageCrudController extends CrudController
 {
     use SaveActions;
     use UniquePages;
+    use TraitReflections;
 
     public function setup()
     {
         parent::__construct();
 
         $modelClass = config('backpack.pagemanager.unique_page_model_class', 'Backpack\PageManager\app\Models\Page');
+
+        $this->checkForTemplatesAndUniquePagesNotDistinct();
 
         /*
         |--------------------------------------------------------------------------
@@ -105,20 +109,12 @@ class UniquePageCrudController extends CrudController
         return $openButton .' '.$revisionsButton;
     }
 
-    public function getUniquePages()
-    {
-        $pages_trait = new \ReflectionClass('App\UniquePages');
-        $pages = $pages_trait->getMethods(\ReflectionMethod::IS_PRIVATE);
-
-        return collect($pages)->pluck('name');
-    }
-
     public function createMissingPage($slug)
     {
         $pages = collect($this->getUniquePages());
 
-        $slugs = $pages->mapWithKeys(function ($page) {
-            return [str_slug($page) => $page];
+        $slugs = $pages->mapWithKeys(function($page) {
+            return [str_slug($page->name) => $page->name];
         });
 
         if (! $page = $slugs->pull($slug)) {
