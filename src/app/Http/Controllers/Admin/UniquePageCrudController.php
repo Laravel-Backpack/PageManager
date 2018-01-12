@@ -23,11 +23,19 @@ class UniquePageCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
         $this->crud->setModel($modelClass);
+        // don't set route or entity names here. these depend on the page you are editing
 
+        // unique pages can not be created nor deleted
         $this->crud->denyAccess('create');
         $this->crud->denyAccess('delete');
     }
 
+    /**
+     * As we want to edit pages by slug we need a new edit function
+     *
+     * @param string $slug the page slug
+     * @return Response
+     */
     public function uniqueEdit($slug)
     {
         $model = $this->crud->model;
