@@ -43,4 +43,15 @@ Route::group([
 
         Route::get('unique/{slug}', $uniqueController.'@uniqueEdit');
         Route::put('unique/{slug}/{id}', $uniqueController.'@update');
+
+        if (config('backpack.pagemanager.unique_page_revisions')) {
+            Route::get('unique/{slug}/{id}/revisions', [
+                'as' => 'crud.unique.listRevisions',
+                'uses' => $uniqueController.'@uniqueRevisions'
+            ]);
+            Route::post('unique/{slug}/{id}/revisions/{revisionId}/restore', [
+                'as' => 'crud.unique.restoreRevision',
+                'uses' => $uniqueController.'@restoreUniqueRevision',
+            ]);
+        }
     });

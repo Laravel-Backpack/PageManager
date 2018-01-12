@@ -28,6 +28,11 @@ class UniquePageCrudController extends CrudController
         // unique pages can not be created nor deleted
         $this->crud->denyAccess('create');
         $this->crud->denyAccess('delete');
+
+        if (config('backpack.pagemanager.unique_page_revisions')) {
+            $this->crud->allowAccess('revisions');
+        }
+
     }
 
     /**
@@ -45,14 +50,7 @@ class UniquePageCrudController extends CrudController
             $entry = $this->createMissingPage($slug);
         }
 
-        $this->data['entry'] = $entry;
-
-        $this->addDefaultPageFields($entry);
-
-        $this->setRoute($slug);
-        $this->crud->setEntityNameStrings($this->crud->makeLabel($entry->template), '');
-
-        $this->{$entry->template}();
+        $this->uniqueSetup($entry);
 
         return parent::edit($entry->id);
     }
@@ -96,8 +94,15 @@ class UniquePageCrudController extends CrudController
         $this->crud->addField([
             'name' => 'open',
             'type' => 'custom_html',
-            'value' => $page->getOpenButton(),
+            'value' => $this->buttons($page)
         ]);
+    }
+
+    public function buttons($page)
+    {
+        $openButton = $page->getOpenButton();
+        $revisionsButton = view('crud::buttons.revisions', ['crud' => $this->crud, 'entry' => $page]);
+        return $openButton .' '.$revisionsButton;
     }
 
     public function getUniquePages()
@@ -130,9 +135,39 @@ class UniquePageCrudController extends CrudController
         ]);
     }
 
+    public function uniqueRevisions($slug, $id)
+    {
+        $model = $this->crud->model;
+        $entry = $model::findBySlugOrFail($slug);
+
+        $this->uniqueSetup($entry);
+
+        return parent::listRevisions($entry->id);
+    }
+
+    public function restoreUniqueRevision($slug, $id)
+    {
+        $model = $this->crud->model;
+        $entry = $model::findBySlugOrFail($slug);
+
+        $this->uniqueSetup($entry);
+
+        return parent::restoreRevision($id);
+    }
+
+    protected function uniqueSetup($entry)
+    {
+        $this->setRoute($entry->slug);
+
+        $this->addDefaultPageFields($entry);
+        $this->crud->setEntityNameStrings($this->crud->makeLabel($entry->template), '');
+
+        $this->{$entry->template}();
+    }
+
     /*
     |--------------------------------------------------------------------------
-    | BASIC CRUD INFORMATION
+    | SaveActions overrides
     |--------------------------------------------------------------------------
     */
 
