@@ -91,6 +91,11 @@ class UniquePageCrudController extends CrudController
     {
         $fields = [
             [
+                'name' => 'buttons',
+                'type' => 'custom_html',
+                'value' => $this->buttons($page),
+            ],
+            [
                 'name' => 'template',
                 'type' => 'hidden',
             ],
@@ -103,11 +108,6 @@ class UniquePageCrudController extends CrudController
             [
                 'name' => 'slug',
                 'type' => 'hidden',
-            ],
-            [
-                'name' => 'open',
-                'type' => 'custom_html',
-                'value' => $this->buttons($page),
             ],
         ];
 
