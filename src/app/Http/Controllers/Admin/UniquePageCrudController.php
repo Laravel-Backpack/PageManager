@@ -30,8 +30,7 @@ class UniquePageCrudController extends CrudController
         // Don't set route or entity names here. These depend on the page you are editing
 
         // unique pages cannot be created nor deleted
-        $this->crud->denyAccess('create');
-        $this->crud->denyAccess('delete');
+        $this->crud->denyAccess(['list', 'create', 'delete']);
 
         if (config('backpack.pagemanager.unique_page_revisions')) {
             $this->crud->allowAccess('revisions');
@@ -49,7 +48,7 @@ class UniquePageCrudController extends CrudController
         $model = $this->crud->model;
         $entry = $model::findBySlug($slug);
 
-        if (! $entry) {
+        if (!$entry) {
             $entry = $this->createMissingPage($slug);
         }
 
@@ -91,8 +90,8 @@ class UniquePageCrudController extends CrudController
     {
         $fields = [
             [
-                'name' => 'buttons',
-                'type' => 'custom_html',
+                'name'  => 'buttons',
+                'type'  => 'custom_html',
                 'value' => $this->buttons($page),
             ],
             [
@@ -138,7 +137,7 @@ class UniquePageCrudController extends CrudController
     {
         $slugs = $this->getUniqueSlugs();
 
-        if (! $slugs->has($slug)) {
+        if (!$slugs->has($slug)) {
             abort(404);
         }
 
@@ -147,9 +146,9 @@ class UniquePageCrudController extends CrudController
 
         return $model::create([
             'template' => $page,
-            'name' => camel_case($page),
-            'title' => camel_case($page),
-            'slug' => $slug,
+            'name'     => camel_case($page),
+            'title'    => camel_case($page),
+            'slug'     => $slug,
         ]);
     }
 
@@ -225,7 +224,7 @@ class UniquePageCrudController extends CrudController
         ];
 
         return [
-            'active' => $saveCurrent,
+            'active'  => $saveCurrent,
             'options' => [],
         ];
     }
