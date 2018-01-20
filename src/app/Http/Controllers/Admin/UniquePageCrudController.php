@@ -153,10 +153,6 @@ class UniquePageCrudController extends CrudController
         ]);
     }
 
-    public function listRevisions()
-    {
-    }
-
     /**
      * Display the revisions for specified resource.
      *
