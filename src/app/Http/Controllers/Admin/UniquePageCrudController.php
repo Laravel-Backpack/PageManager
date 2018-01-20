@@ -48,7 +48,7 @@ class UniquePageCrudController extends CrudController
         $model = $this->crud->model;
         $entry = $model::findBySlug($slug);
 
-        if (!$entry) {
+        if (! $entry) {
             $entry = $this->createMissingPage($slug);
         }
 
@@ -137,7 +137,7 @@ class UniquePageCrudController extends CrudController
     {
         $slugs = $this->getUniqueSlugs();
 
-        if (!$slugs->has($slug)) {
+        if (! $slugs->has($slug)) {
             abort(404);
         }
 
