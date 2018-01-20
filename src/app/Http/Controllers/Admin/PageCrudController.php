@@ -34,7 +34,6 @@ class PageCrudController extends CrudController
         $template_names = $this->getTemplateNames();
         $this->crud->addClause('whereIn', 'template', $template_names);
 
-
         /*
         |--------------------------------------------------------------------------
         | COLUMNS

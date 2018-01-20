@@ -6,9 +6,8 @@ use Illuminate\Support\Collection;
 
 trait TraitReflections
 {
-
     /**
-     * Check for equal named templates and unique pages
+     * Check for equal named templates and unique pages.
      *
      * As the method name of a unique page will also be the template name in the database,
      * we must ensure that there are not any equal names defined.
@@ -85,7 +84,7 @@ trait TraitReflections
     }
 
     /**
-     * Get all defined template names
+     * Get all defined template names.
      *
      * @return Collection
      */

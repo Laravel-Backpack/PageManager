@@ -108,7 +108,7 @@ class UniquePageCrudController extends CrudController
                 'name' => 'open',
                 'type' => 'custom_html',
                 'value' => $this->buttons($page),
-            ]
+            ],
         ];
 
         $this->crud->addFields($fields);
@@ -138,7 +138,7 @@ class UniquePageCrudController extends CrudController
     {
         $slugs = $this->getUniqueSlugs();
 
-        if (!$slugs->has($slug)) {
+        if (! $slugs->has($slug)) {
             abort(404);
         }
 
@@ -155,7 +155,6 @@ class UniquePageCrudController extends CrudController
 
     public function listRevisions()
     {
-
     }
 
     /**
@@ -236,7 +235,7 @@ class UniquePageCrudController extends CrudController
     }
 
     /**
-     * Override trait version to not update the session variable
+     * Override trait version to not update the session variable.
      *
      * @param [type] $forceSaveAction [description]
      */
