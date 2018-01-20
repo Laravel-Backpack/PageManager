@@ -27,9 +27,9 @@ class UniquePageCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
         $this->crud->setModel($modelClass);
-        // don't set route or entity names here. these depend on the page you are editing
+        // Don't set route or entity names here. These depend on the page you are editing
 
-        // unique pages can not be created nor deleted
+        // unique pages cannot be created nor deleted
         $this->crud->denyAccess('create');
         $this->crud->denyAccess('delete');
 
@@ -39,9 +39,9 @@ class UniquePageCrudController extends CrudController
     }
 
     /**
-     * As we want to edit pages by slug we need a new edit function.
+     * Edit the unique page retrieved by slug.
      *
-     * @param string $slug the page slug
+     * @param string $slug
      * @return Response
      */
     public function uniqueEdit($slug)
@@ -58,6 +58,13 @@ class UniquePageCrudController extends CrudController
         return parent::edit($entry->id);
     }
 
+    /**
+     * Update the unique page.
+     *
+     * @param string $slug
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function update($slug, $id)
     {
         $this->setRoute($slug);
@@ -65,42 +72,54 @@ class UniquePageCrudController extends CrudController
         return parent::updateCrud();
     }
 
+    /**
+     * Set the crud route.
+     *
+     * @param $slug
+     */
     public function setRoute($slug)
     {
         $this->crud->setRoute(config('backpack.base.route_prefix').'/unique/'.$slug);
     }
 
     /**
-     * Populate the update form with basic fields, that all pages need.
+     * Populate the update form with basic fields that all pages need.
      *
-     * @param Model $page the page entity
+     * @param Model $page
      */
     public function addDefaultPageFields($page)
     {
-        $this->crud->addField([
-            'name' => 'template',
-            'type' => 'hidden',
-        ]);
-        $this->crud->addField([
-            'name' => 'name',
-            'type' => 'hidden',
-        ]);
-        $this->crud->addField([
-            'name' => 'title',
-            'type' => 'hidden',
-        ]);
-        $this->crud->addField([
-            'name' => 'slug',
-            'type' => 'hidden',
-        ]);
+        $fields = [
+            [
+                'name' => 'template',
+                'type' => 'hidden',
+            ],
+            [
+                'name' => 'name',
+            ],
+            [
+                'name' => 'title',
+            ],
+            [
+                'name' => 'slug',
+                'type' => 'hidden',
+            ],
+            [
+                'name' => 'open',
+                'type' => 'custom_html',
+                'value' => $this->buttons($page),
+            ]
+        ];
 
-        $this->crud->addField([
-            'name' => 'open',
-            'type' => 'custom_html',
-            'value' => $this->buttons($page),
-        ]);
+        $this->crud->addFields($fields);
     }
 
+    /**
+     * Build the buttons html for the edit form.
+     *
+     * @param Model $page
+     * @return string
+     */
     public function buttons($page)
     {
         $openButton = $page->getOpenButton();
@@ -109,18 +128,21 @@ class UniquePageCrudController extends CrudController
         return $openButton.' '.$revisionsButton;
     }
 
+    /**
+     * Create the page by slug.
+     *
+     * @param $slug
+     * @return mixed
+     */
     public function createMissingPage($slug)
     {
-        $pages = collect($this->getUniquePages());
+        $slugs = $this->getUniqueSlugs();
 
-        $slugs = $pages->mapWithKeys(function ($page) {
-            return [str_slug($page->name) => $page->name];
-        });
-
-        if (! $page = $slugs->pull($slug)) {
+        if (!$slugs->has($slug)) {
             abort(404);
         }
 
+        $page = $slugs->pull($slug);
         $model = $this->crud->model;
 
         return $model::create([
@@ -131,6 +153,18 @@ class UniquePageCrudController extends CrudController
         ]);
     }
 
+    public function listRevisions()
+    {
+
+    }
+
+    /**
+     * Display the revisions for specified resource.
+     *
+     * @param $slug
+     * @param $id
+     * @return Response
+     */
     public function uniqueRevisions($slug, $id)
     {
         $model = $this->crud->model;
@@ -141,6 +175,17 @@ class UniquePageCrudController extends CrudController
         return parent::listRevisions($entry->id);
     }
 
+    /**
+     * Restore a specific revision for the specified resource.
+     *
+     * Used via AJAX in the revisions view
+     *
+     * @param string $slug
+     * @param int $id
+     *
+     * @return JSON Response containing the new revision that was created from the update
+     * @return HTTP 500 if the request did not contain the revision ID
+     */
     public function restoreUniqueRevision($slug, $id)
     {
         $model = $this->crud->model;
@@ -151,6 +196,11 @@ class UniquePageCrudController extends CrudController
         return parent::restoreRevision($id);
     }
 
+    /**
+     * Setup the controller for the entry.
+     *
+     * @param $entry
+     */
     protected function uniqueSetup($entry)
     {
         $this->setRoute($entry->slug);
@@ -168,7 +218,9 @@ class UniquePageCrudController extends CrudController
     */
 
     /**
-     * Overrides trait version to remove.
+     * Overrides trait version to remove 'save_and_back' and 'save_and_new'.
+     *
+     * @return [type] [description]
      */
     public function getSaveAction()
     {
@@ -183,6 +235,11 @@ class UniquePageCrudController extends CrudController
         ];
     }
 
+    /**
+     * Override trait version to not update the session variable
+     *
+     * @param [type] $forceSaveAction [description]
+     */
     public function setSaveAction($forceSaveAction = null)
     {
         // do nothing to preserve session value for other crud

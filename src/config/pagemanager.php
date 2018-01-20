@@ -5,6 +5,7 @@ return [
     'admin_controller_class'        => 'Backpack\PageManager\app\Http\Controllers\Admin\PageCrudController',
 
     // Change this class if you wish to extend the Page model
+    // remember to change 'unique_page_model_class' if you want to use the same model
     'page_model_class'              => 'Backpack\PageManager\app\Models\Page',
 
     // Change this class if you wish to extend UniquePageCrudController

@@ -31,8 +31,10 @@ class PageCrudController extends CrudController
         $this->crud->setRoute(config('backpack.base.route_prefix').'/page');
         $this->crud->setEntityNameStrings(trans('backpack::pagemanager.page'), trans('backpack::pagemanager.pages'));
 
-        $template_names = collect($this->getTemplates())->pluck('name');
+        $template_names = $this->getTemplateNames();
         $this->crud->addClause('whereIn', 'template', $template_names);
+
+
         /*
         |--------------------------------------------------------------------------
         | COLUMNS

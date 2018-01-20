@@ -9,14 +9,14 @@ trait UniquePages
     | Unique pages for Backpack\PageManager
     |--------------------------------------------------------------------------
     |
-    | Each unique page has its own method, that define what fields should show up using the Backpack\CRUD API.
-    | Use snake_case for naming and PageManager will generate the page on first edit
+    | Each unique page has its own method that defines what fields should show up using the Backpack\CRUD API.
+    | Use snake_case for naming and PageManager will generate the page on first edit.
     |
     | Any fields defined here will show up after the standard page fields:
-    | - select template (hidden and fix)
-    | - page name (only seen by admins) (hidden and fix)
+    | - select template (hidden field and not editable)
+    | - page name (only seen by admins)
     | - page title
-    | - page slug (hidden and fix, slug of method name)
+    | - page slug (hidden and not editable, generated as slug of method name)
     */
 
     private function about_us()

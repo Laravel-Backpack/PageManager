@@ -54,15 +54,16 @@ php artisan migrate
 
 ## Unique pages usage
 
-Unique pages are pages that exist only once. You can not create a second instance nor delete the current one. 
+Unique pages are pages that exist only once. You can not create a second instance nor delete the current one.
+ 
 **Only editing**
 
 Each unique page is defined like a page template in app/UniquePages.php using the backpack\CRUD API.
 It will be available for editing in the backend at  
 `< route_prefix >/unique/< page_function_slug >`
 
-For users to access the editing page for the page `about_us` you could add a menu item like so:
-(remember the url will use the slug of your function)
+For users to access the editing page for the page `about_us` you could add a menu item like so
+(remember the url will use the slug of your function):
 
 ```html
 <li><a href="{{ url(config('backpack.base.route_prefix').'/unique/about-us') }}"><i class="fa fa-file-o"></i> <span>Pages</span></a></li>

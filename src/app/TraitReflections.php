@@ -2,35 +2,73 @@
 
 namespace Backpack\PageManager\app;
 
+use Illuminate\Support\Collection;
+
 trait TraitReflections
 {
+
+    /**
+     * Check for equal named templates and unique pages
+     *
+     * As the method name of a unique page will also be the template name in the database,
+     * we must ensure that there are not any equal names defined.
+     * If different Models (and so different tables in the database) are used, this condition must not hold any more.
+     *
+     * @throws \Exception
+     */
     public function checkForTemplatesAndUniquePagesNotDistinct()
     {
-        if (config('backpack.pagemanager.page_model_class') != config('backpack.pagemanager.unique_page_model_class')) {
+        if (config('backpack.pagemanager.page_model_class') !== config('backpack.pagemanager.unique_page_model_class')) {
             return;
         }
 
-        $uniquePages = collect($this->getUniquePages())->pluck('name');
-        $templates = collect($this->getTemplates())->pluck('name');
+        $uniquePages = $this->getUniquePageNames();
+        $templates = $this->getTemplateNames();
 
         if ($uniquePages->intersect($templates)->isNotEmpty()) {
-            throw new \Exception('Templates and unique pages should not have the same function names when same model class is used.');
+            throw new \Exception('Templates and unique pages must not have the same function names when same model class is used.');
         }
     }
 
     /**
      * Get all defined unique pages.
+     *
+     * @return Collection
      */
     public function getUniquePages()
     {
         $pages_trait = new \ReflectionClass('App\UniquePages');
         $pages = $pages_trait->getMethods(\ReflectionMethod::IS_PRIVATE);
 
-        return $pages;
+        return collect($pages);
+    }
+
+    /**
+     * Get all defined unique page names.
+     *
+     * @return Collection
+     */
+    public function getUniquePageNames()
+    {
+        return $this->getUniquePages()->pluck('name');
+    }
+
+    /**
+     * Get the page names keyed with slugs.
+     *
+     * @return Collection
+     */
+    public function getUniqueSlugs()
+    {
+        return $this->getUniquePageNames()->mapWithKeys(function ($name) {
+            return [str_slug($name) => $name];
+        });
     }
 
     /**
      * Get all defined templates.
+     *
+     * @return Collection
      */
     public function getTemplates($template_name = false)
     {
@@ -43,6 +81,16 @@ trait TraitReflections
             abort(503, trans('backpack::pagemanager.template_not_found'));
         }
 
-        return $templates;
+        return collect($templates);
+    }
+
+    /**
+     * Get all defined template names
+     *
+     * @return Collection
+     */
+    public function getTemplateNames()
+    {
+        return $this->getTemplates()->pluck('name');
     }
 }
