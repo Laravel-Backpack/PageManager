@@ -200,7 +200,7 @@ class UniquePageCrudController extends CrudController
         $this->setRoute($entry->slug);
 
         $this->addDefaultPageFields($entry);
-        $this->crud->setEntityNameStrings($this->crud->makeLabel($entry->template), '');
+        $this->crud->setEntityNameStrings($this->crud->makeLabel($entry->template), $this->crud->makeLabel($entry->template));
 
         $this->{$entry->template}();
     }
