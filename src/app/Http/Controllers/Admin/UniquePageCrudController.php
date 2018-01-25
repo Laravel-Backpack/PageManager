@@ -6,6 +6,7 @@ use App\UniquePages;
 use Backpack\PageManager\app\TraitReflections;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Http\Controllers\CrudFeatures\SaveActions;
+use Illuminate\Http\Request;
 
 class UniquePageCrudController extends CrudController
 {
@@ -66,7 +67,10 @@ class UniquePageCrudController extends CrudController
      */
     public function update($slug, $id)
     {
-        $this->setRoute($slug);
+        $model = $this->crud->model;
+        $entry = $model::findBySlugOrFail($slug);
+
+        $this->uniqueSetup($entry);
 
         return parent::updateCrud();
     }
