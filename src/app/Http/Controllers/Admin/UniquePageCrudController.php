@@ -3,10 +3,10 @@
 namespace Backpack\PageManager\app\Http\Controllers\Admin;
 
 use App\UniquePages;
+use Illuminate\Http\Request;
 use Backpack\PageManager\app\TraitReflections;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Http\Controllers\CrudFeatures\SaveActions;
-use Illuminate\Http\Request;
 
 class UniquePageCrudController extends CrudController
 {
