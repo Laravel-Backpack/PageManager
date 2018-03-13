@@ -78,10 +78,7 @@ class PageController extends Controller
     {
         $page = Page::findBySlug($slug);
 
-        if (!$page)
-        {
-            abort(404, 'Please go back to our <a href="'.url('').'">homepage</a>.');
-        }
+        abort_if(!$page, 404, 'Please go back to our <a href="'.url('').'">homepage</a>.');
 
         $this->data['title'] = $page->title;
         $this->data['page'] = $page->withFakes();
