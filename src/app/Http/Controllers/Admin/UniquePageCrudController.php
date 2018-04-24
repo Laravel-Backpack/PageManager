@@ -30,7 +30,6 @@ class UniquePageCrudController extends CrudController
         $this->crud->setModel($modelClass);
         // Don't set route or entity names here. These depend on the page you are editing
 
-        // unique pages cannot be created nor deleted
         $this->crud->denyAccess(['list', 'create', 'delete']);
 
         if (config('backpack.pagemanager.unique_page_revisions')) {
@@ -132,7 +131,7 @@ class UniquePageCrudController extends CrudController
     }
 
     /**
-     * Create the page by slug.
+     * Create missing unique page by slug.
      *
      * @param $slug
      * @return mixed
@@ -237,6 +236,7 @@ class UniquePageCrudController extends CrudController
 
     /**
      * Override trait version to not update the session variable.
+     * This way we preserve the user chosen save action and don't overwrite with
      *
      * @param [type] $forceSaveAction [description]
      */

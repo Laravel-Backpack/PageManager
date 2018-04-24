@@ -11,7 +11,7 @@ trait TraitReflections
      *
      * As the method name of a unique page will also be the template name in the database,
      * we must ensure that there are not any equal names defined.
-     * If different Models (and so different tables in the database) are used, this condition must not hold any more.
+     * If different Models (and so different tables in the database) are used, this condition is obsolete.
      *
      * @throws \Exception
      */
