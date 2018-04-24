@@ -21,8 +21,10 @@ trait TraitReflections
             return;
         }
 
-        $uniquePages = $this->loadUniquePages();
-        $templates = $this->loadTemplates();
+        // use the internal function directly to prevent an 503 abort if no pages are defined
+        $uniquePages = $this->loadUniquePages()->pluck('name');
+        // use the internal function directly to prevent an 503 abort if no templates are defined
+        $templates = $this->loadTemplates()->pluck('name');
 
         if ($uniquePages->intersect($templates)->isNotEmpty()) {
             throw new \Exception('Templates and unique pages must not have the same function names when same model class is used.');
