@@ -16,7 +16,7 @@ class UniquePageCrudController extends CrudController
 
     public function setup()
     {
-        parent::__construct();
+        parent::setup();
 
         $modelClass = config('backpack.pagemanager.unique_page_model_class', 'Backpack\PageManager\app\Models\Page');
 
@@ -201,6 +201,8 @@ class UniquePageCrudController extends CrudController
      */
     protected function uniqueSetup($entry)
     {
+        $this->crud->entry = $entry;
+
         $this->setRoute($entry->slug);
 
         $this->addDefaultPageFields($entry);
