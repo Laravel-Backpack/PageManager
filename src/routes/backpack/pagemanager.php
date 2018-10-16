@@ -11,7 +11,7 @@
 */
 
 Route::group([
-        'middleware' => ['web', backpack_middleware()],
+        'middleware' => ['web', config('backpack.base.middleware_key', 'admin')],
         'prefix' => config('backpack.base.route_prefix', 'admin'),
     ], function () {
         $controller = config('backpack.pagemanager.admin_controller_class', 'Backpack\PageManager\app\Http\Controllers\Admin\PageCrudController');
