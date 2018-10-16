@@ -26,7 +26,8 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ### Added
 - PT translation;
-
+- merged #70 - using custom Backpack guard as defined by ```backpack_auth()```;
+- put PageManager panel behind standard Backpack middleware (defined in Base config file);
 
 ## 1.1.23 - 2018-03-13
 
