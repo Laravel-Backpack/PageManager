@@ -22,6 +22,12 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Nothing
 
 
+## 1.1.24 - 2018-10-16
+
+### Added
+- PT translation;
+
+
 ## 1.1.23 - 2018-03-13
 
 ### Added
