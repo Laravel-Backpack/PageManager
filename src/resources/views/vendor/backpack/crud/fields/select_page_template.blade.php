@@ -47,7 +47,7 @@
                 var new_template = $("#select_template").val();
                 var current_url = "{{ Request::url() }}";
 
-                window.location.href = strip_last_template_parameter(current_url)+'/'+new_template;
+                window.location.href = strip_last_template_parameter(current_url)+'?template='+new_template;
             }
 
             function strip_last_template_parameter(url) {
