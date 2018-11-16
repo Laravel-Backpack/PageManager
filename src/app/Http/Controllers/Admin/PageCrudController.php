@@ -206,7 +206,7 @@ class PageCrudController extends CrudController
         $templates = $this->getTemplates();
 
         foreach ($templates as $template) {
-            $templates_array[$template->name] = $this->crud->makeLabel($template->name);
+            $templates_array[$template->name] = str_replace('_', ' ', title_case($template->name));
         }
 
         return $templates_array;

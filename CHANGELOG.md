@@ -22,6 +22,11 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Nothing
 
 
+## 1.1.25 - 2018-11-16
+
+### Fixed
+- #73 - converting template method name to a readable name stripped characters in some instances;
+
 ## 1.1.24 - 2018-10-16
 
 ### Added
