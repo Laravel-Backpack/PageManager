@@ -22,6 +22,11 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Nothing
 
 
+## 1.1.26 - 2018-11-16
+
+### Fixed
+- #73 - hotfix;
+
 ## 1.1.25 - 2018-11-16
 
 ### Fixed

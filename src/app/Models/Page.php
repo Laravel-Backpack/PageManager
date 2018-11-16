@@ -50,7 +50,7 @@ class Page extends Model
 
     public function getTemplateName()
     {
-        return str_replace('_', ' ', title_case($template->name))
+        return str_replace('_', ' ', title_case($this->template));
     }
 
     public function getPageLink()
