@@ -22,6 +22,12 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Nothing
 
 
+## 1.1.27 - 2018-12-06
+
+### Fixed
+- #75 - using old version of select_page_template field;
+
+
 ## 1.1.26 - 2018-11-16
 
 ### Fixed

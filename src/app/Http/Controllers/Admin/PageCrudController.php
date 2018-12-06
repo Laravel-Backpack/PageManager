@@ -128,6 +128,7 @@ class PageCrudController extends CrudController
                                 'name' => 'template',
                                 'label' => trans('backpack::pagemanager.template'),
                                 'type' => 'select_page_template',
+                                'view_namespace'  => 'pagemanager::fields',
                                 'options' => $this->getTemplatesArray(),
                                 'value' => $template,
                                 'allows_null' => false,
