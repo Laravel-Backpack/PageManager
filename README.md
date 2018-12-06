@@ -144,7 +144,7 @@ Backpack is free for non-commercial use and 39 EUR/project for commercial use. P
 [ico-travis]: https://img.shields.io/travis/laravel-backpack/PageManager/master.svg?style=flat-square
 [ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/laravel-backpack/PageManager.svg?style=flat-square
 [ico-code-quality]: https://img.shields.io/scrutinizer/g/laravel-backpack/PageManager.svg?style=flat-square
-[ico-downloads]: https://img.shields.io/packagist/dt/laravel-backpack/PageManager.svg?style=flat-square
+[ico-downloads]: https://img.shields.io/packagist/dt/backpack/pagemanager.svg?style=flat-square
 
 [link-packagist]: https://packagist.org/packages/laravel-backpack/PageManager
 [link-travis]: https://travis-ci.org/laravel-backpack/PageManager
