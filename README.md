@@ -150,6 +150,6 @@ Backpack is free for non-commercial use and 39 EUR/project for commercial use. P
 [link-travis]: https://travis-ci.org/laravel-backpack/PageManager
 [link-scrutinizer]: https://scrutinizer-ci.com/g/laravel-backpack/PageManager/code-structure
 [link-code-quality]: https://scrutinizer-ci.com/g/laravel-backpack/PageManager
-[link-downloads]: https://packagist.org/packages/laravel-backpack/PageManager
+[link-downloads]: https://packagist.org/packages/backpack/pagemanager
 [link-author]: https://github.com/tabacitu
 [link-contributors]: ../../contributors
