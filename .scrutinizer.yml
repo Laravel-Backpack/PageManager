@@ -10,6 +10,7 @@ filter:
         - 'vendor/*'
         - 'views/*'
 tools:
+    external_code_coverage: true
     php_analyzer: true
     php_mess_detector: true
     php_changetracking: true
