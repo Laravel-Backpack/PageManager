@@ -76,7 +76,7 @@ class PageCrudController extends CrudController
         $this->addDefaultPageFields($template);
         $this->useTemplate($template);
 
-        return parent::create();
+        return parent::create($template);
     }
 
     // Overwrites the CrudController store() method to add template usage.
