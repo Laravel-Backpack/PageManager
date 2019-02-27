@@ -22,6 +22,11 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Nothing
 
 
+## 1.1.28 - 2019-02-27
+
+### Fixed
+- #79, merged #81 - changing template on Create page;
+
 ## 1.1.27 - 2018-12-06
 
 ### Fixed
