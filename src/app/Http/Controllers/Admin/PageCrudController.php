@@ -72,7 +72,7 @@ class PageCrudController extends CrudController
     public function create($template = false)
     {
         $template = request('template');
-        
+
         $this->addDefaultPageFields($template);
         $this->useTemplate($template);
 
