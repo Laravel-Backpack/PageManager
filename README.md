@@ -21,7 +21,7 @@ An interface to let your admins add and edit presentation pages to your Laravel 
 1) In your terminal
 
 ``` bash
-$ composer require backpack/pagemanager
+composer require backpack/pagemanager
 ```
 
 2) For Laravel apps <5.5, add the service providers to your config/app.php file:
