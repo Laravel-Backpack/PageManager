@@ -63,7 +63,7 @@ No front-end is provided (Backpack only takes care of the admin panel), but for 
 ```php
 /** CATCH-ALL ROUTE for Backpack/PageManager - needs to be at the end of your routes.php file  **/
 Route::get('{page}/{subs?}', ['uses' => 'PageController@index'])
-    ->where(['page' => '^((?!admin).)*$', 'subs' => '.*']);
+    ->where(['page' => '^(((?=(?!admin))(?=(?!\/)).))*$', 'subs' => '.*']);
 ```
 
 (2) Create ```app\Http\Controllers\PageController.php``` that actually shows the page.
@@ -77,7 +77,7 @@ use App\Http\Controllers\Controller;
 
 class PageController extends Controller
 {
-    public function index($slug)
+    public function index($slug, $subs = null)
     {
         $page = Page::findBySlug($slug);
 
