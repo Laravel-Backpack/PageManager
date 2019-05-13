@@ -55,6 +55,28 @@ php artisan migrate
 1. Go to **yourapp/admin/page** and see how it works.
 2. Define your own templates in app/PageTemplates.php using the Backpack\CRUD API.
 
+## Unique pages usage
+
+Unique pages are pages that exist only once. You can not create a second instance nor delete the current one.
+ 
+**Only editing**
+
+Each unique page is defined like a page template in app/UniquePages.php using the backpack\CRUD API.
+It will be available for editing in the backend at  
+`< route_prefix >/unique/< page_function_slug >`
+
+For users to access the editing page for the page `about_us` you could add a menu item like so
+(remember the url will use the slug of your function):
+
+```html
+<li><a href="{{ url(config('backpack.base.route_prefix').'/unique/about-us') }}"><i class="fa fa-file-o"></i> <span>Pages</span></a></li>
+```
+
+**Unique pages can easily use revisions**
+
+Be sure to subclass `Backpack\PageManager\app\Models\Page` and follow the docs on setting up revisions for your CRUD.
+After that just set the config value `unique_page_revisions` to `true`and you are ready to go.
+
 ## Example front-end
 
 No front-end is provided (Backpack only takes care of the admin panel), but for most projects this front-end code will be all you need:

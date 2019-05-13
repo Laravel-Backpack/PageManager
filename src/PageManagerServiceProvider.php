@@ -33,6 +33,8 @@ class PageManagerServiceProvider extends ServiceProvider
         $this->publishes([__DIR__.'/resources/views' => base_path('resources/views')], 'views');
         // publish PageTemplates trait
         $this->publishes([__DIR__.'/app/PageTemplates.php' => app_path('PageTemplates.php')], 'trait');
+        // publish UniquePages trait
+        $this->publishes([__DIR__.'/app/UniquePages.php' => app_path('UniquePages.php')], 'trait');
         // publish migrations
         $this->publishes([__DIR__.'/database/migrations' => database_path('migrations')], 'migrations');
         // public config

@@ -4,6 +4,7 @@ namespace Backpack\PageManager\app\Http\Controllers\Admin;
 
 use App\PageTemplates;
 // VALIDATION: change the requests to match your own file names if you need form validation
+use Backpack\PageManager\app\TraitReflections;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\PageManager\app\Http\Requests\PageRequest as StoreRequest;
 use Backpack\PageManager\app\Http\Requests\PageRequest as UpdateRequest;
@@ -11,10 +12,13 @@ use Backpack\PageManager\app\Http\Requests\PageRequest as UpdateRequest;
 class PageCrudController extends CrudController
 {
     use PageTemplates;
+    use TraitReflections;
 
     public function setup($template_name = false)
     {
         $modelClass = config('backpack.pagemanager.page_model_class', 'Backpack\PageManager\app\Models\Page');
+
+        $this->checkForTemplatesAndUniquePagesNotDistinct();
 
         /*
         |--------------------------------------------------------------------------
@@ -24,6 +28,9 @@ class PageCrudController extends CrudController
         $this->crud->setModel($modelClass);
         $this->crud->setRoute(config('backpack.base.route_prefix').'/page');
         $this->crud->setEntityNameStrings(trans('backpack::pagemanager.page'), trans('backpack::pagemanager.pages'));
+
+        $template_names = $this->getTemplateNames();
+        $this->crud->addClause('whereIn', 'template', $template_names);
 
         /*
         |--------------------------------------------------------------------------
@@ -180,23 +187,6 @@ class PageCrudController extends CrudController
         if ($template_name) {
             $this->{$template_name}();
         }
-    }
-
-    /**
-     * Get all defined templates.
-     */
-    public function getTemplates($template_name = false)
-    {
-        $templates_array = [];
-
-        $templates_trait = new \ReflectionClass('App\PageTemplates');
-        $templates = $templates_trait->getMethods(\ReflectionMethod::IS_PRIVATE);
-
-        if (! count($templates)) {
-            abort(503, trans('backpack::pagemanager.template_not_found'));
-        }
-
-        return $templates;
     }
 
     /**
