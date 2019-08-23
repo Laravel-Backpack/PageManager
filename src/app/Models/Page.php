@@ -60,7 +60,7 @@ class Page extends Model
 
     public function getOpenButton()
     {
-        return '<a class="btn btn-default btn-xs" href="'.$this->getPageLink().'" target="_blank">'.
+        return '<a class="btn btn-sm btn-link" href="'.$this->getPageLink().'" target="_blank">'.
             '<i class="fa fa-eye"></i> '.trans('backpack::pagemanager.open').'</a>';
     }
 

@@ -32,19 +32,19 @@ class PageCrudController extends CrudController
         */
 
         $this->crud->addColumn([
-                                'name' => 'name',
-                                'label' => trans('backpack::pagemanager.name'),
-                                ]);
+            'name' => 'name',
+            'label' => trans('backpack::pagemanager.name'),
+        ]);
         $this->crud->addColumn([
-                                'name' => 'template',
-                                'label' => trans('backpack::pagemanager.template'),
-                                'type' => 'model_function',
-                                'function_name' => 'getTemplateName',
-                                ]);
+            'name' => 'template',
+            'label' => trans('backpack::pagemanager.template'),
+            'type' => 'model_function',
+            'function_name' => 'getTemplateName',
+        ]);
         $this->crud->addColumn([
-                                'name' => 'slug',
-                                'label' => trans('backpack::pagemanager.slug'),
-                                ]);
+            'name' => 'slug',
+            'label' => trans('backpack::pagemanager.slug'),
+        ]);
 
         /*
         |--------------------------------------------------------------------------
@@ -127,39 +127,39 @@ class PageCrudController extends CrudController
     public function addDefaultPageFields($template = false)
     {
         $this->crud->addField([
-                                'name' => 'template',
-                                'label' => trans('backpack::pagemanager.template'),
-                                'type' => 'select_page_template',
-                                'view_namespace'  => 'pagemanager::fields',
-                                'options' => $this->getTemplatesArray(),
-                                'value' => $template,
-                                'allows_null' => false,
-                                'wrapperAttributes' => [
-                                    'class' => 'form-group col-md-6',
-                                ],
-                            ]);
+            'name' => 'template',
+            'label' => trans('backpack::pagemanager.template'),
+            'type' => 'select_page_template',
+            'view_namespace'  => 'pagemanager::fields',
+            'options' => $this->getTemplatesArray(),
+            'value' => $template,
+            'allows_null' => false,
+            'wrapperAttributes' => [
+                'class' => 'form-group col-md-6',
+            ],
+        ]);
         $this->crud->addField([
-                                'name' => 'name',
-                                'label' => trans('backpack::pagemanager.page_name'),
-                                'type' => 'text',
-                                'wrapperAttributes' => [
-                                    'class' => 'form-group col-md-6',
-                                ],
-                                // 'disabled' => 'disabled'
-                            ]);
+            'name' => 'name',
+            'label' => trans('backpack::pagemanager.page_name'),
+            'type' => 'text',
+            'wrapperAttributes' => [
+                'class' => 'form-group col-md-6',
+            ],
+            // 'disabled' => 'disabled'
+        ]);
         $this->crud->addField([
-                                'name' => 'title',
-                                'label' => trans('backpack::pagemanager.page_title'),
-                                'type' => 'text',
-                                // 'disabled' => 'disabled'
-                            ]);
+            'name' => 'title',
+            'label' => trans('backpack::pagemanager.page_title'),
+            'type' => 'text',
+            // 'disabled' => 'disabled'
+        ]);
         $this->crud->addField([
-                                'name' => 'slug',
-                                'label' => trans('backpack::pagemanager.page_slug'),
-                                'type' => 'text',
-                                'hint' => trans('backpack::pagemanager.page_slug_hint'),
-                                // 'disabled' => 'disabled'
-                            ]);
+            'name' => 'slug',
+            'label' => trans('backpack::pagemanager.page_slug'),
+            'type' => 'text',
+            'hint' => trans('backpack::pagemanager.page_slug_hint'),
+            // 'disabled' => 'disabled'
+        ]);
     }
 
     /**
