@@ -10,6 +10,12 @@ use Backpack\PageManager\app\Http\Requests\PageRequest as UpdateRequest;
 
 class PageCrudController extends CrudController
 {
+    use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation { create as traitCreate; }
+    use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation { edit as traitEdit; }
+    use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\SaveActions;
+
     use PageTemplates;
 
     public function setup($template_name = false)
@@ -76,7 +82,7 @@ class PageCrudController extends CrudController
         $this->addDefaultPageFields($template);
         $this->useTemplate($template);
 
-        return parent::create($template);
+        return $this->traitCreate($template);
     }
 
     // Overwrites the CrudController store() method to add template usage.
@@ -85,7 +91,7 @@ class PageCrudController extends CrudController
         $this->addDefaultPageFields(\Request::input('template'));
         $this->useTemplate(\Request::input('template'));
 
-        return parent::storeCrud();
+        return $this->storeEntry($request);
     }
 
     // Overwrites the CrudController edit() method to add template usage.
@@ -103,7 +109,7 @@ class PageCrudController extends CrudController
         $this->addDefaultPageFields($template);
         $this->useTemplate($template);
 
-        return parent::edit($id);
+        return $this->traitEdit($id);
     }
 
     // Overwrites the CrudController update() method to add template usage.
@@ -112,7 +118,7 @@ class PageCrudController extends CrudController
         $this->addDefaultPageFields(\Request::input('template'));
         $this->useTemplate(\Request::input('template'));
 
-        return parent::updateCrud();
+        return $this->updateEntry($request);
     }
 
     // -----------------------------------------------
