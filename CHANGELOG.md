@@ -22,6 +22,12 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Nothing
 
 
+## 1.1.29 - 2019-09-04
+
+### Added
+- Laravel 6 support;
+
+
 ## 1.1.28 - 2019-02-27
 
 ### Fixed
