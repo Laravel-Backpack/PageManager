@@ -51,7 +51,7 @@ class PageCrudController extends CrudController
         // Note:
         // - default fields, that all templates are using, are set using $this->addDefaultPageFields();
         // - template-specific fields are set per-template, in the PageTemplates trait;
-        
+
         $this->addDefaultPageFields(\Request::input('template'));
         $this->useTemplate(\Request::input('template'));
 
