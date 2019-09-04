@@ -5,36 +5,26 @@ namespace Backpack\PageManager\app\Http\Controllers\Admin;
 use App\PageTemplates;
 // VALIDATION: change the requests to match your own file names if you need form validation
 use Backpack\CRUD\app\Http\Controllers\CrudController;
-use Backpack\PageManager\app\Http\Requests\PageRequest as StoreRequest;
-use Backpack\PageManager\app\Http\Requests\PageRequest as UpdateRequest;
+use Backpack\PageManager\app\Http\Requests\PageRequest;
 
 class PageCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation { create as traitCreate; }
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation { edit as traitEdit; }
+    use \Backpack\CRUD\app\Http\Controllers\Operations\CloneOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use PageTemplates;
 
-    public function setup($template_name = false)
+    public function setup()
     {
-        $modelClass = config('backpack.pagemanager.page_model_class', 'Backpack\PageManager\app\Models\Page');
-
-        /*
-        |--------------------------------------------------------------------------
-        | BASIC CRUD INFORMATION
-        |--------------------------------------------------------------------------
-        */
-        $this->crud->setModel($modelClass);
+        $this->crud->setModel(config('backpack.pagemanager.page_model_class', 'Backpack\PageManager\app\Models\Page'));
         $this->crud->setRoute(config('backpack.base.route_prefix').'/page');
         $this->crud->setEntityNameStrings(trans('backpack::pagemanager.page'), trans('backpack::pagemanager.pages'));
+    }
 
-        /*
-        |--------------------------------------------------------------------------
-        | COLUMNS
-        |--------------------------------------------------------------------------
-        */
-
+    protected function setupListOperation()
+    {
         $this->crud->addColumn([
             'name' => 'name',
             'label' => trans('backpack::pagemanager.name'),
@@ -49,22 +39,6 @@ class PageCrudController extends CrudController
             'name' => 'slug',
             'label' => trans('backpack::pagemanager.slug'),
         ]);
-
-        /*
-        |--------------------------------------------------------------------------
-        | FIELDS
-        |--------------------------------------------------------------------------
-        */
-
-        // In PageManager,
-        // - default fields, that all templates are using, are set using $this->addDefaultPageFields();
-        // - template-specific fields are set per-template, in the PageTemplates trait;
-
-        /*
-        |--------------------------------------------------------------------------
-        | BUTTONS
-        |--------------------------------------------------------------------------
-        */
         $this->crud->addButtonFromModelFunction('line', 'open', 'getOpenButton', 'beginning');
     }
 
@@ -72,51 +46,27 @@ class PageCrudController extends CrudController
     // Overwrites of CrudController
     // -----------------------------------------------
 
-    // Overwrites the CrudController create() method to add template usage.
-    public function create($template = false)
+    protected function setupCreateOperation()
     {
-        $template = request('template');
-
-        $this->addDefaultPageFields($template);
-        $this->useTemplate($template);
-
-        return $this->traitCreate($template);
-    }
-
-    // Overwrites the CrudController store() method to add template usage.
-    public function store(StoreRequest $request)
-    {
+        // Note:
+        // - default fields, that all templates are using, are set using $this->addDefaultPageFields();
+        // - template-specific fields are set per-template, in the PageTemplates trait;
+        
         $this->addDefaultPageFields(\Request::input('template'));
         $this->useTemplate(\Request::input('template'));
 
-        return $this->storeEntry($request);
+        $this->crud->setValidation(PageRequest::class);
     }
 
-    // Overwrites the CrudController edit() method to add template usage.
-    public function edit($id, $template = false)
+    protected function setupUpdateOperation()
     {
-        $template = request('template');
-
         // if the template in the GET parameter is missing, figure it out from the db
-        if ($template == false) {
-            $model = $this->crud->model;
-            $this->data['entry'] = $model::findOrFail($id);
-            $template = $this->data['entry']->template;
-        }
+        $template = \Request::input('template') ?? $this->crud->getCurrentEntry()->template;
 
         $this->addDefaultPageFields($template);
         $this->useTemplate($template);
 
-        return $this->traitEdit($id);
-    }
-
-    // Overwrites the CrudController update() method to add template usage.
-    public function update(UpdateRequest $request)
-    {
-        $this->addDefaultPageFields(\Request::input('template'));
-        $this->useTemplate(\Request::input('template'));
-
-        return $this->updateEntry($request);
+        $this->crud->setValidation(PageRequest::class);
     }
 
     // -----------------------------------------------
