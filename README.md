@@ -152,7 +152,7 @@ If you are looking for a developer/team to help you build an admin panel on Lara
 [ico-code-quality]: https://img.shields.io/scrutinizer/g/laravel-backpack/PageManager.svg?style=flat-square
 [ico-downloads]: https://img.shields.io/packagist/dt/backpack/pagemanager.svg?style=flat-square
 
-[link-packagist]: https://packagist.org/packages/laravel-backpack/PageManager
+[link-packagist]: https://packagist.org/packages/backpack/pagemanager
 [link-travis]: https://travis-ci.org/laravel-backpack/PageManager
 [link-scrutinizer]: https://scrutinizer-ci.com/g/laravel-backpack/PageManager/code-structure
 [link-code-quality]: https://scrutinizer-ci.com/g/laravel-backpack/PageManager
