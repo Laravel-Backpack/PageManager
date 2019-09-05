@@ -25,6 +25,8 @@
             "role": "Architect & Developer"
         }
     ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "require": {
         "backpack/crud": "^4.0",
         "cviebrock/eloquent-sluggable": "^6.0"
