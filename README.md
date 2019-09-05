@@ -18,17 +18,85 @@ An interface to let your admins add and edit presentation pages to your Laravel 
 
 ## Install
 
-1) In your terminal
+1) Add a file to define your page templates in ```app/PageTemplates.php```:
+```php
+<?php
+
+namespace App;
+
+trait PageTemplates
+{
+    /*
+    |--------------------------------------------------------------------------
+    | Page Templates for Backpack\PageManager
+    |--------------------------------------------------------------------------
+    |
+    | Each page template has its own method, that define what fields should show up using the Backpack\CRUD API.
+    | Use snake_case for naming and PageManager will make sure it looks pretty in the create/update form
+    | template dropdown.
+    |
+    | Any fields defined here will show up after the standard page fields:
+    | - select template
+    | - page name (only seen by admins)
+    | - page title
+    | - page slug
+    */
+
+    private function services()
+    {
+        $this->crud->addField([   // CustomHTML
+                        'name' => 'metas_separator',
+                        'type' => 'custom_html',
+                        'value' => '<br><h2>'.trans('backpack::pagemanager.metas').'</h2><hr>',
+                    ]);
+        $this->crud->addField([
+                        'name' => 'meta_title',
+                        'label' => trans('backpack::pagemanager.meta_title'),
+                        'fake' => true,
+                        'store_in' => 'extras',
+                    ]);
+        $this->crud->addField([
+                        'name' => 'meta_description',
+                        'label' => trans('backpack::pagemanager.meta_description'),
+                        'fake' => true,
+                        'store_in' => 'extras',
+                    ]);
+        $this->crud->addField([
+                        'name' => 'meta_keywords',
+                        'type' => 'textarea',
+                        'label' => trans('backpack::pagemanager.meta_keywords'),
+                        'fake' => true,
+                        'store_in' => 'extras',
+                    ]);
+        $this->crud->addField([   // CustomHTML
+                        'name' => 'content_separator',
+                        'type' => 'custom_html',
+                        'value' => '<br><h2>'.trans('backpack::pagemanager.content').'</h2><hr>',
+                    ]);
+        $this->crud->addField([
+                        'name' => 'content',
+                        'label' => trans('backpack::pagemanager.content'),
+                        'type' => 'wysiwyg',
+                        'placeholder' => trans('backpack::pagemanager.content_placeholder'),
+                    ]);
+    }
+
+    private function about_us()
+    {
+        $this->crud->addField([
+                        'name' => 'content',
+                        'label' => trans('backpack::pagemanager.content'),
+                        'type' => 'wysiwyg',
+                        'placeholder' => trans('backpack::pagemanager.content_placeholder'),
+                    ]);
+    }
+}
+```
+
+2) In your terminal
 
 ``` bash
 composer require backpack/pagemanager
-```
-
-2) For Laravel apps <5.5, add the service providers to your config/app.php file:
-
-```
-Cviebrock\EloquentSluggable\ServiceProvider::class, 
-Backpack\PageManager\PageManagerServiceProvider::class,
 ```
 
 3) Publish the views, migrations and the PageTemplates trait:
@@ -45,8 +113,8 @@ php artisan migrate
 
 5) [optional] Add a menu item for it in resources/views/vendor/backpack/base/inc/sidebar.blade.php or menu.blade.php:
 
-```html
-<li><a href="{{ url(config('backpack.base.route_prefix').'/page') }}"><i class="fa fa-file-o"></i> <span>Pages</span></a></li>
+```
+php artisan backpack:add-sidebar-content "<li class='nav-item'><a class='nav-link' href="{{ backpack_url('page') }}"><i class="nav-icon fa fa-file-o"></i> <span>Pages</span></a></li>"
 ```
 
 
