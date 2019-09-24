@@ -4,22 +4,18 @@ All Notable changes to `BackPack\PageManager` will be documented in this file.
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
-## NEXT - YYYY-MM-DD
+------
+
+
+## 2.0.0 - 2019-09-24
 
 ### Added
-- Nothing
-
-### Deprecated
-- Nothing
-
-### Fixed
-- Nothing
+- Backpack v4 support;
 
 ### Removed
-- Nothing
+- Backpack v3 support;
 
-### Security
-- Nothing
+------
 
 
 ## 1.1.29 - 2019-09-04
