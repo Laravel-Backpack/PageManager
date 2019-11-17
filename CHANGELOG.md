@@ -6,6 +6,12 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ------
 
+## 2.0.2 - 2019-11-17
+
+### Added
+- Russian language translation;
+
+
 ## 2.0.1 - 2019-10-04
 
 ### Added
