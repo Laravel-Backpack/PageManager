@@ -6,6 +6,12 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ------
 
+## 2.0.3 - 2019-12-17
+
+### Fixed
+- fixed #98 - allow installation on Backpack 4.0 on Laravel 5.8;
+
+
 ## 2.0.2 - 2019-11-17
 
 ### Added
