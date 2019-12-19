@@ -6,6 +6,12 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ------
 
+## 2.0.4 - 2019-12-19
+
+### Added
+- Farsi (Persian) language file;
+
+
 ## 2.0.3 - 2019-12-17
 
 ### Fixed
