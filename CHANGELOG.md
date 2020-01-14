@@ -6,6 +6,12 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ------
 
+## 2.0.5 - 2020-01-14
+
+### Added
+- merged #101 - added Indonesian language file;
+
+
 ## 2.0.4 - 2019-12-19
 
 ### Added
