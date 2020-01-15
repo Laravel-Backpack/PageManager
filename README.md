@@ -130,7 +130,7 @@ No front-end is provided (Backpack only takes care of the admin panel), but for 
 (1) Create a catch-all route at the end of your routes file:
 ```php
 /** CATCH-ALL ROUTE for Backpack/PageManager - needs to be at the end of your routes.php file  **/
-Route::get('{page}/{subs?}', ['uses' => 'PageController@index'])
+Route::get('{page}/{subs?}', ['uses' => '\App\Http\Controllers\PageController@index'])
     ->where(['page' => '^(((?=(?!admin))(?=(?!\/)).))*$', 'subs' => '.*']);
 ```
 
