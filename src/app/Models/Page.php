@@ -6,6 +6,7 @@ use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 use Illuminate\Database\Eloquent\Model;
+use Str;
 
 class Page extends Model
 {
@@ -53,7 +54,7 @@ class Page extends Model
 
     public function getTemplateName()
     {
-        return str_replace('_', ' ', title_case($this->template));
+        return str_replace('_', ' ', Str::title($this->template));
     }
 
     public function getPageLink()
@@ -64,7 +65,7 @@ class Page extends Model
     public function getOpenButton()
     {
         return '<a class="btn btn-sm btn-link" href="'.$this->getPageLink().'" target="_blank">'.
-            '<i class="fa fa-eye"></i> '.trans('backpack::pagemanager.open').'</a>';
+            '<i class="la la-eye"></i> '.trans('backpack::pagemanager.open').'</a>';
     }
 
     /*
