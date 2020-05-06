@@ -6,7 +6,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ------
 
-## 3.0.0 - 2020-04-24
+## 3.0.0 - 2020-05-06
 
 ### Added
 - support for Backpack 4.1;
