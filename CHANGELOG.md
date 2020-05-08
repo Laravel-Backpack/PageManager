@@ -6,6 +6,19 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ------
 
+## 3.0.0 - 2020-05-06
+
+### Added
+- support for Backpack 4.1;
+
+### Removed
+- support for Backpack 4.0;
+- laravel/helpers dependency;
+
+
+------
+
+
 ## 2.0.7 - 2020-03-05
 
 ### Fixed
