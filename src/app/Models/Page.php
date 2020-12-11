@@ -37,7 +37,7 @@ class Page extends Model
      *
      * @return array
      */
-    public function sluggable():array
+    public function sluggable(): array
     {
         return [
             'slug' => [
