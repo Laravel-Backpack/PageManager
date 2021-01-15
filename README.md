@@ -197,7 +197,7 @@ If you need to modify how this works in a project:
 
 ## Security
 
-If you discover any security related issues, please email hello@tabacitu.ro instead of using the issue tracker.
+If you discover any security related issues, please email hello@backpackforlaravel.com instead of using the issue tracker.
 
 ## Credits
 
