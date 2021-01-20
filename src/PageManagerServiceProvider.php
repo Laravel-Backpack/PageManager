@@ -42,7 +42,13 @@ class PageManagerServiceProvider extends ServiceProvider
 
         $this->mergeConfigFrom(__DIR__.'/config/pagemanager.php', 'backpack.pagemanager');
 
-        $this->loadViewsFrom(base_path('resources/views/vendor/backpack/crud'), 'pagemanager');
+        // first load published/overwritten views
+        $customViewsFolder = resource_path('views/vendor/backpack/crud');
+        if (file_exists($customViewsFolder)) {
+            $this->loadViewsFrom($customViewsFolder, 'pagemanager');
+        }
+
+        // then load the stock views
         $this->loadViewsFrom(realpath(__DIR__.'/resources/views/vendor/backpack/crud'), 'pagemanager');
     }
 
