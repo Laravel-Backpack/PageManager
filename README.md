@@ -10,7 +10,7 @@
 
 An interface to let your admins add and edit presentation pages to your Laravel 6, 7 or 8 website, by defining page templates with any number of content areas and any number of content types. Uses [Laravel Backpack](https://github.com/laravel-backpack).
 
-![Backpack PageManager edit page](https://backpackforlaravel.com/uploads/screenshots/page_edit.png "PageManager edit page")
+![Backpack PageManager edit page](https://user-images.githubusercontent.com/1032474/106446854-6dc73100-6489-11eb-9e4c-b21273cef23e.png "PageManager edit page")
 
 
 > ### Security updates and breaking changes
