@@ -6,7 +6,7 @@ return [
     'content_placeholder' => 'محتواك هنا',
     'meta_description' => 'وصف الميتا',
     'meta_keywords' => 'الكلمات المفتاحية للميتا',
-    'meta_title' => 'عنوان الميتا',
+    'meta_title' => 'عنوان الميتا', 
     'metas' => 'الميتا',
     'name' => 'الإسم',
     'open' => 'إفتح',
