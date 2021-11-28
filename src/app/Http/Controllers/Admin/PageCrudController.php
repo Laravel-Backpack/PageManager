@@ -77,7 +77,7 @@ class PageCrudController extends CrudController
     /**
      * Populate the create/update forms with basic fields, that all pages need.
      *
-     * @param string $template The name of the template that should be used in the current form.
+     * @param  string  $template  The name of the template that should be used in the current form.
      */
     public function addDefaultPageFields($template = false)
     {
@@ -120,7 +120,7 @@ class PageCrudController extends CrudController
     /**
      * Add the fields defined for a specific template.
      *
-     * @param  string $template_name The name of the template that should be used in the current form.
+     * @param  string  $template_name  The name of the template that should be used in the current form.
      */
     public function useTemplate($template_name = false)
     {
