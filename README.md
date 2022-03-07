@@ -77,7 +77,7 @@ trait PageTemplates
         $this->crud->addField([
                         'name' => 'content',
                         'label' => trans('backpack::pagemanager.content'),
-                        'type' => 'wysiwyg',
+                        'type' => 'summernote',
                         'placeholder' => trans('backpack::pagemanager.content_placeholder'),
                     ]);
     }
@@ -87,7 +87,7 @@ trait PageTemplates
         $this->crud->addField([
                         'name' => 'content',
                         'label' => trans('backpack::pagemanager.content'),
-                        'type' => 'wysiwyg',
+                        'type' => 'summernote',
                         'placeholder' => trans('backpack::pagemanager.content_placeholder'),
                     ]);
     }
