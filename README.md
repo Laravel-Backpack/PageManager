@@ -174,6 +174,10 @@ If you need to make any modifications to the controller, model or request, you s
 - create a new controller/model that extends the one in the package;
 - enter controller or model in the pagemanager.php config file, and that's the one that the CRUD will be using;
 
+## Optional: Mutator for fields using 'store_in' and 'fake' keys
+
+Fake fields do not trigger individual mutators, they trigger the "fake column" mutator. For example instead of defining a `setImageAttribute()` mutator, please define a `setExtrasAttribute()` mutator. You'll have the `$value` then.
+
 ## Change log
 
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
