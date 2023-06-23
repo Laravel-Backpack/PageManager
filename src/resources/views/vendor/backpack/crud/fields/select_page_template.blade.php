@@ -47,13 +47,12 @@
                 var new_template = $("#select_template").val();
                 var current_url = "{{ Request::url() }}";
 
-                window.location.href = strip_last_template_parameter(current_url)+'?template='+new_template;
+                window.location.href = strip_last_template_parameter(current_url) + '?template=' + new_template;
             }
 
             function strip_last_template_parameter(url) {
                 // if it's a create or edit link with a template parameter
-                if (url.indexOf("/create/") > -1 || url.indexOf("/edit/") > -1)
-                {
+                if (url.indexOf("/create/") > -1 || url.indexOf("/edit/") > -1) {
                     // remove the last parameter of the url
                     var url_array = url.split('/');
                     url_array = url_array.slice(0, -1);
@@ -69,19 +68,23 @@
                 $('#select_template').data('current', $('#select_template').val());
 
                 $("#select_template").change(function(e) {
-                    var select_template_confirmation = confirm("@lang('backpack::pagemanager.change_template_confirmation')");
-                    if (select_template_confirmation == true) {
-                        redirect_to_new_page_with_template_parameter();
-                    } else {
-                        // txt = "You pressed Cancel!";
-                        $('#select_template').val($('#select_template').data('current'));
-                    }
+                    swal({
+                        title: "{!! trans('backpack::base.notice') !!}",
+                        text: "{!! trans('backpack::pagemanager.change_template_confirmation') !!}",
+                        icon: "info",
+                        buttons: true,
+                    }).then((confirmation) => {
+                        if (confirmation) {
+                            redirect_to_new_page_with_template_parameter();
+                        } else {
+                            $('#select_template').val($('#select_template').data('current'));
+                        }
+                    });
                 });
 
             });
         </script>
     @endpush
-
 @endif
 {{-- End of Extra CSS and JS --}}
 {{-- ########################################## --}}
