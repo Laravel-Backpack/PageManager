@@ -71,7 +71,7 @@
                     swal({
                         title: "{!! trans('backpack::base.notice') !!}",
                         text: "{!! trans('backpack::pagemanager.change_template_confirmation') !!}",
-                        icon: "info",
+                        icon: "warning",
                         buttons: true,
                     }).then((confirmation) => {
                         if (confirmation) {
