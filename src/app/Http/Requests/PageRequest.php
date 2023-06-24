@@ -2,8 +2,6 @@
 
 namespace Backpack\PageManager\app\Http\Requests;
 
-use App\Http\Requests\Request;
-
 class PageRequest extends \Backpack\CRUD\app\Http\Requests\CrudRequest
 {
     /**
