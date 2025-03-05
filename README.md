@@ -206,7 +206,7 @@ If you need to modify how this works in a project:
 
 If you discover any security related issues, please email hello@backpackforlaravel.com instead of using the issue tracker.
 
-Please subscribe to the **[Backpack Newsletter](http://backpackforlaravel.com/newsletter)** so you can find out about any security updates, breaking changes or major features. We send an email every 1-2 months.
+Please subscribe to the **[Backpack Newsletter](https://backpackforlaravel.com/newsletter)** so you can find out about any security updates, breaking changes or major features. We send an email every 1-2 months.
 
 ## Credits
 
@@ -225,7 +225,7 @@ If you are looking for a developer/team to help you build an admin panel on Lara
 
 [ico-version]: https://img.shields.io/packagist/v/backpack/PageManager.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-dual-blue?style=flat-square
-[ico-travis]: https://flat.badgen.net/travis/Laravel-Backpack/PageManager
+[ico-travis]: https://img.shields.io/travis/com/laravel-backpack/PageManager
 [ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/laravel-backpack/PageManager.svg?style=flat-square
 [ico-code-quality]: https://img.shields.io/scrutinizer/g/laravel-backpack/PageManager.svg?style=flat-square
 [ico-downloads]: https://img.shields.io/packagist/dt/backpack/pagemanager.svg?style=flat-square
