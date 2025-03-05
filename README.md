@@ -223,7 +223,7 @@ If you are looking for a developer/team to help you build an admin panel on Lara
 
 [ico-version]: https://img.shields.io/packagist/v/backpack/PageManager.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-dual-blue?style=flat-square
-[ico-travis]: https://img.shields.io/travis/laravel-backpack/PageManager/master.svg?style=flat-square
+[ico-travis]: https://flat.badgen.net/travis/Laravel-Backpack/PageManager
 [ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/laravel-backpack/PageManager.svg?style=flat-square
 [ico-code-quality]: https://img.shields.io/scrutinizer/g/laravel-backpack/PageManager.svg?style=flat-square
 [ico-downloads]: https://img.shields.io/packagist/dt/backpack/pagemanager.svg?style=flat-square
